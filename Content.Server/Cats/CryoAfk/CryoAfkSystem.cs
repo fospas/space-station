@@ -34,7 +34,6 @@ public sealed class CryoAfkSystem : EntitySystem
     [Dependency] private readonly IEntityManager _entity = default!;
     [Dependency] private readonly IGameTiming _timing = default!;
 
-    /// <inheritdoc/>
     public override void Initialize()
     {
         SubscribeLocalEvent<StationInitializedEvent>(OnStationInitialized);
@@ -86,7 +85,7 @@ public sealed class CryoAfkSystem : EntitySystem
     private void OnStationInitialized(StationInitializedEvent ev)
     {
         if (FindCryo(ev.Station, Transform(ev.Station)) == null)
-            return;  // Ни одного крио на станции
+            return;
         EnsureComp<StationCryoTeleportComponent>(ev.Station);
     }
 
