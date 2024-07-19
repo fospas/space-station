@@ -178,28 +178,30 @@ public sealed class RadioSystem : EntitySystem
     }
 
     private string GetIdCardName(EntityUid senderUid)
+{
+    var idCardTitle = Loc.GetString("chat-radio-no-id");
+
+    if (TryComp(senderUid, out HandsComponent? hands) &&
+        hands.ActiveHandEntity is EntityUid heldItem &&
+        TryGetIdCard(heldItem, out var idCard))
     {
-        var idCardTitle = Loc.GetString("chat-radio-no-id");
-
-        if (_inventorySystem.TryGetSlotEntity(senderUid, "id", out var idUid))
-        {
-            if (EntityManager.TryGetComponent(idUid, out PdaComponent? pda) && pda.ContainedId is not null)
-            {
-                // PDA
-                idCardTitle = pda.ContainedId.JobTitle ?? idCardTitle;
-            }
-            else if (EntityManager.TryGetComponent(idUid, out IdCardComponent? id))
-            {
-                // ID Card
-                idCardTitle = id.JobTitle ?? idCardTitle;
-            }
-        }
-
-        var textInfo = CultureInfo.CurrentCulture.TextInfo;
-        idCardTitle = textInfo.ToTitleCase(idCardTitle);
-
-        return $"\\[{idCardTitle}\\] ";
+        idCardTitle = idCard.JobTitle ?? idCardTitle;
     }
+    else if (TryComp(senderUid, out IdCardComponent? idCardComp))
+    {
+        idCardTitle = idCardComp.JobTitle ?? idCardTitle;
+    }
+    else if (_inventorySystem.TryGetSlotEntity(senderUid, "id", out var idUid) && TryGetIdCard(idUid.Value, out var idCard))
+    {
+        idCardTitle = idCard.JobTitle ?? idCardTitle;
+    }
+
+    var textInfo = CultureInfo.CurrentCulture.TextInfo;
+    idCardTitle = textInfo.ToTitleCase(idCardTitle);
+
+    return $"\\[{idCardTitle}\\] ";
+}
+
 
     /// <inheritdoc cref="TelecomServerComponent"/>
     private bool HasActiveServer(MapId mapId, string channelId)
