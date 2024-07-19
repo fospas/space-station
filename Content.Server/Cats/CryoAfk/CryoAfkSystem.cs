@@ -21,9 +21,6 @@ using Robust.Shared.Timing;
 
 namespace Content.Server.Cats.CryoAfk;
 
-/// <summary>
-/// This handles...
-/// </summary>
 public sealed class CryoAfkSystem : EntitySystem
 {
     [Dependency] private readonly StationSystem _station = default!;
@@ -116,70 +113,6 @@ public sealed class CryoAfkSystem : EntitySystem
     {
         comp.ExitTime = null;
     }
-
-    // private void OnGibbed(EntityUid uid, CryoAFKTargetComponent comp, BeingGibbedEvent ev)
-    // {
-    //     if (comp.Station == null)
-    //         return;
-    //
-    //     if (!TryComp<TransformComponent>(uid, out var entityXform))
-    //         return;
-    //
-    //     if (!TryComp<StationCryoTeleportComponent>(comp.Station, out var stationCryoTeleportComponent))
-    //         return;
-    //
-    //     // var stationJobsComponent = Comp<StationJobsComponent>(comp.Station.Value);
-    //     _mind.TryGetMind(uid, out var mindId, out var mindComp);
-    //
-    //     if (mindComp == null)
-    //     {
-    //         Log.Error($"mindComp null");
-    //         return;
-    //     }
-    //
-    //     if (mindComp.UserId == null)
-    //         return;
-    //
-    //     foreach (var uniqueStation in _station.GetStationsSet())
-    //     {
-    //         if (!TryComp<StationJobsComponent>(uniqueStation, out var stationJobs))
-    //             continue;
-    //
-    //         if (!_stationJobs.TryGetPlayerJobs(uniqueStation, mindComp.UserId.Value, out var jobs, stationJobs))
-    //             continue;
-    //
-    //         foreach (var job in jobs)
-    //         {
-    //             _stationJobs.TryAdjustJobSlot(uniqueStation, job, 1, clamp: true);
-    //         }
-    //
-    //         _stationJobs.TryRemovePlayerJobs(uniqueStation, mindComp.UserId.Value, stationJobs);
-    //     }
-    //
-    //     if (!TryComp<StationRecordsComponent>(comp.Station, out var stationRecords))
-    //         return;
-    //
-    //     var jobName = Loc.GetString("earlyleave-cryo-job-unknown");
-    //     var recordId = _stationRecords.GetRecordByName(comp.Station.Value, Name(uid));
-    //     if (recordId != null)
-    //     {
-    //         var key = new StationRecordKey(recordId.Value, comp.Station.Value);
-    //         if (_stationRecords.TryGetRecord<GeneralStationRecord>(key, out var entry, stationRecords))
-    //             jobName = entry.JobTitle;
-    //
-    //         _stationRecords.RemoveRecord(key, stationRecords);
-    //     }
-    //
-    //     _chat.DispatchStationAnnouncement(comp.Station.Value,
-    //         Loc.GetString(
-    //             "earlyleave-cryo-announcement",
-    //             ("character", Name(uid)),
-    //             ("job", CultureInfo.CurrentCulture.TextInfo.ToTitleCase(jobName))
-    //         ),
-    //         Loc.GetString("earlyleave-cryo-sender"),
-    //         playDefault: false
-    //     );
-    // }
 
     private EntityUid? FindCryo(EntityUid station, TransformComponent entityXform)
     {
