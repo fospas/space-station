@@ -32,8 +32,8 @@ public static class BanPanelEuiStateMsg
         public string[]? Roles { get; set; }
         public bool UseLastIp { get; set; }
         public bool UseLastHwid { get; set; }
-        public bool Erase { get; set; }
         public int StatedRound { get; set; }
+        public bool Erase { get; set; }
 
         public CreateBanRequest(string? player, (IPAddress, int)? ipAddress, bool useLastIp, byte[]? hwid, bool useLastHwid, uint minutes, string reason, NoteSeverity severity, int statedRound, string[]? roles)
         {
