@@ -9,9 +9,9 @@ using Content.Shared.Radio;
 using Content.Shared.Radio.Components;
 using Content.Shared.Speech;
 using Content.Shared.Access.Components;
-using Content.Shared.Humanoid;
-using Content.Shared.Inventory;
-using Content.Shared.PDA;
+using Content.Shared.Humanoid; 
+using Content.Shared.Inventory; 
+using Content.Shared.PDA; 
 using System.Globalization; 
 using Robust.Shared.Map;
 using Robust.Shared.Network;
@@ -93,7 +93,8 @@ public sealed class RadioSystem : EntitySystem
         var formattedName = name;
         if (TryComp<HumanoidAppearanceComponent>(messageSource, out var humanoidComp))
         {
-            formattedName = $"[color={humanoidComp.SpeakerColor.ToHex()}]{GetIdCardName(messageSource)}{name}[/color]";
+            // Assuming you have a different way to get the color or appearance information.
+            formattedName = $"[color=white]{GetIdCardName(messageSource)}{name}[/color]";
         }
 
         SpeechVerbPrototype speech;
