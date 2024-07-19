@@ -22,12 +22,13 @@ namespace Content.Client.Administration.UI.BanPanel;
 [GenerateTypedNameReferences]
 public sealed partial class BanPanel : DefaultWindow
 {
-    public event Action<string?, (IPAddress, int)?, bool, byte[]?, bool, uint, string, NoteSeverity, string[]?, bool>? BanSubmitted;
+    public event Action<string?, (IPAddress, int)?, bool, byte[]?, bool, uint, string, NoteSeverity, int, string[]?>? BanSubmitted;
     public event Action<string>? PlayerChanged;
     private string? PlayerUsername { get; set; }
     private (IPAddress, int)? IpAddress { get; set; }
     private byte[]? Hwid { get; set; }
     private double TimeEntered { get; set; }
+    private int statedRoundEntered { get; set; }
     private uint Multiplier { get; set; }
     private bool HasBanFlag { get; set; }
     private TimeSpan? ButtonResetOn { get; set; }
@@ -108,6 +109,7 @@ public sealed partial class BanPanel : DefaultWindow
             OnIpChanged();
             OnHwidChanged();
         };
+        StatedRoundLine.OnTextChanged += OnStatedRoundChanged;
         SubmitButton.OnPressed += SubmitButtonOnOnPressed;
 
         IpCheckbox.Pressed = _cfg.GetCVar(CCVars.ServerBanIpBanDefault);
@@ -285,6 +287,7 @@ public sealed partial class BanPanel : DefaultWindow
         PlayerName = 1 << 1,
         IpAddress = 1 << 2,
         Hwid = 1 << 3,
+        StatedRound = 1 << 4,
     }
 
     private ErrorLevelEnum ErrorLevel { get; set; }
@@ -306,6 +309,23 @@ public sealed partial class BanPanel : DefaultWindow
         TimeEntered = result;
         UpdateSubmitEnabled();
         UpdateExpiresLabel();
+    }
+
+    private void OnStatedRoundChanged(LineEdit.LineEditEventArgs args)
+    {
+        StatedRoundLine.Text = args.Text;
+        if (!int.TryParse(args.Text, out var result))
+        {
+            ErrorLevel |= ErrorLevelEnum.StatedRound;
+            StatedRoundLine.ModulateSelfOverride = Color.Red;
+            UpdateSubmitEnabled();
+            return;
+        }
+
+        ErrorLevel &= ~ErrorLevelEnum.StatedRound;
+        StatedRoundLine.ModulateSelfOverride = null;
+        statedRoundEntered = result;
+        UpdateSubmitEnabled();
     }
 
     private void OnMultiplierChanged()
@@ -512,7 +532,7 @@ public sealed partial class BanPanel : DefaultWindow
         var useLastHwid = HwidCheckbox.Pressed && LastConnCheckbox.Pressed && Hwid is null;
         var severity = (NoteSeverity) SeverityOption.SelectedId;
         var erase = EraseCheckbox.Pressed;
-        BanSubmitted?.Invoke(player, IpAddress, useLastIp, Hwid, useLastHwid, (uint) (TimeEntered * Multiplier), reason, severity, roles, erase);
+        BanSubmitted?.Invoke(player, IpAddress, useLastIp, Hwid, useLastHwid, (uint) (TimeEntered * Multiplier), reason, severity, statedRoundEntered, roles);
     }
 
     protected override void FrameUpdate(FrameEventArgs args)

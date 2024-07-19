@@ -125,7 +125,11 @@ public sealed class AdminNotesManager : IAdminNotesManager, IPostInjectInit
         {
             case NoteType.Note:
                 if (severity is null)
-                    throw new ArgumentException("Severity cannot be null for a note", nameof(severity));
+                {
+                    //throw new ArgumentException("Severity cannot be null for a note", nameof(severity));
+                    _sawmill.Error("Severity cannot be null for a note");
+                    severity = NoteSeverity.None;
+                }
                 noteId = await _db.AddAdminNote(roundId, player, playtime, message, severity.Value, secret, createdBy.UserId, createdAt, expiryTime);
                 break;
             case NoteType.Watchlist:
@@ -157,6 +161,7 @@ public sealed class AdminNotesManager : IAdminNotesManager, IPostInjectInit
             createdAt,
             createdAt,
             expiryTime,
+            null,
             null,
             null,
             null,

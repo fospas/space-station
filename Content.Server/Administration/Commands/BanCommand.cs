@@ -34,6 +34,8 @@ public sealed class BanCommand : LocalizedCommands
             severity = NoteSeverity.High;
         }
 
+        int round = 0;
+
         switch (args.Length)
         {
             case 2:
@@ -72,6 +74,32 @@ public sealed class BanCommand : LocalizedCommands
                 }
 
                 break;
+            case 5:
+                target = args[0];
+                reason = args[1];
+
+                if (!uint.TryParse(args[2], out minutes))
+                {
+                    shell.WriteLine(Loc.GetString("cmd-ban-invalid-minutes", ("minutes", args[2])));
+                    shell.WriteLine(Help);
+                    return;
+                }
+
+                if (!Enum.TryParse(args[3], ignoreCase: true, out severity))
+                {
+                    shell.WriteLine(Loc.GetString("cmd-ban-invalid-severity", ("severity", args[3])));
+                    shell.WriteLine(Help);
+                    return;
+                }
+
+                if (!int.TryParse(args[4], out round))
+                {
+                    shell.WriteLine(Loc.GetString("cmd-ban-invalid-stated-round", ("statedround", args[4])));
+                    shell.WriteLine(Help);
+                    return;
+                }
+
+                break;
             default:
                 shell.WriteLine(Loc.GetString("cmd-ban-invalid-arguments"));
                 shell.WriteLine(Help);
@@ -90,7 +118,7 @@ public sealed class BanCommand : LocalizedCommands
         var targetUid = located.UserId;
         var targetHWid = located.LastHWId;
 
-        _bans.CreateServerBan(targetUid, target, player?.UserId, null, targetHWid, minutes, severity, reason);
+        _bans.CreateServerBan(targetUid, target, player?.UserId, null, targetHWid, minutes, severity, player?.Name, round, reason);
     }
 
     public override CompletionResult GetCompletion(IConsoleShell shell, string[] args)
@@ -130,6 +158,11 @@ public sealed class BanCommand : LocalizedCommands
             };
 
             return CompletionResult.FromHintOptions(severities, Loc.GetString("cmd-ban-hint-severity"));
+        }
+
+        if (args.Length == 5)
+        {
+            return CompletionResult.FromHint(LocalizationManager.GetString("cmd-ban-hint-stated-round"));
         }
 
         return CompletionResult.Empty;

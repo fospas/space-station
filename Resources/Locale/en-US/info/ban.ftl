@@ -1,14 +1,16 @@
 # ban
 cmd-ban-desc = Bans somebody
-cmd-ban-help = Usage: ban <name or user ID> <reason> [duration in minutes, leave out or 0 for permanent ban]
+cmd-ban-help = Usage: ban <name or user ID> <reason> [duration in minutes, leave out or 0 for permanent ban] <severity> <round>
 cmd-ban-player = Unable to find a player with that name.
 cmd-ban-invalid-minutes = {$minutes} is not a valid amount of minutes!
 cmd-ban-invalid-severity = {$severity} is not a valid severity!
 cmd-ban-invalid-arguments = Invalid amount of arguments
+cmd-ban-invalid-stated-round = ${statedround} is not a valid round number!
 cmd-ban-hint = <name/user ID>
 cmd-ban-hint-reason = <reason>
 cmd-ban-hint-duration = [duration]
 cmd-ban-hint-severity = [severity]
+cmd-ban-hint-stated-round = [violation round]
 
 cmd-ban-hint-duration-1 = Permanent
 cmd-ban-hint-duration-2 = 1 day
@@ -82,3 +84,4 @@ ban-panel-erase = Erase chat messages and player from round
 server-ban-string = {$admin} created a {$severity} severity server ban that expires {$expires} for [{$name}, {$ip}, {$hwid}], with reason: {$reason}
 server-ban-string-no-pii = {$admin} created a {$severity} severity server ban that expires {$expires} for {$name} with reason: {$reason}
 server-ban-string-never = never
+ban-panel-stated-round = Violation round:

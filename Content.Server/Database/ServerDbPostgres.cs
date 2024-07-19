@@ -214,6 +214,8 @@ namespace Content.Server.Database
                 ban.Reason,
                 ban.Severity,
                 aUid,
+                ban.BanningAdminName,
+                ban.StatedRound,
                 unbanDef);
         }
 
@@ -251,7 +253,9 @@ namespace Content.Server.Database
                 ExpirationTime = serverBan.ExpirationTime?.UtcDateTime,
                 RoundId = serverBan.RoundId,
                 PlaytimeAtNote = serverBan.PlaytimeAtNote,
-                PlayerUserId = serverBan.UserId?.UserId
+                PlayerUserId = serverBan.UserId?.UserId,
+                StatedRound = serverBan.StatedRound,
+                BanningAdminName = serverBan.BanningAdminName
             });
 
             await db.PgDbContext.SaveChangesAsync();

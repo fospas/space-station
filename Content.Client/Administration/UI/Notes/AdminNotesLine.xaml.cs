@@ -160,7 +160,15 @@ public sealed partial class AdminNotesLine : BoxContainer
             else
                 sb.Append(Loc.GetString("admin-notes-minutes", ("minutes", banLength.TotalMinutes.ToString(".00"))));
         }
-
+        
+        sb.Append(" - ");
+        sb.Append(Loc.GetString("admin-notes-stated-round"));
+        string statedRound;
+        if (Note.StatedRound is { } statedRoundInt)
+            statedRound = statedRoundInt.ToString();
+        else
+            statedRound = Loc.GetString("admin-notes-stated-round-not-specified");
+        sb.Append(statedRound);
         sb.Append(" - ");
         sb.Append(Note.Message);
         return sb.ToString();

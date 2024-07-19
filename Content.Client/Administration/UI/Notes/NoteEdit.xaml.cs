@@ -105,7 +105,7 @@ public sealed partial class NoteEdit : FancyWindow
 
     private string PlayerName { get; }
     private int NoteId { get; }
-    private bool IsSecret { get; set; }
+    private bool IsSecret { get; set; } = true;
     private NoteType NoteType { get; set; }
 
     private NoteSeverity? NoteSeverity
@@ -131,7 +131,7 @@ public sealed partial class NoteEdit : FancyWindow
             case (int) NoteType.Note: // Note: your standard note, does nothing special
                 NoteType = NoteType.Note;
                 SecretCheckBox.Disabled = false;
-                SecretCheckBox.Pressed = false;
+                SecretCheckBox.Pressed = true; 
                 SeverityOption.Disabled = false;
                 PermanentCheckBox.Pressed = true;
                 UpdatePermanentCheckboxFields();

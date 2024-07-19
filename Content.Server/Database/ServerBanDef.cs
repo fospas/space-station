@@ -26,6 +26,8 @@ namespace Content.Server.Database
         public NoteSeverity Severity { get; set; }
         public NetUserId? BanningAdmin { get; }
         public ServerUnbanDef? Unban { get; }
+        public string? BanningAdminName { get; }
+        public int StatedRound { get; }
 
         public ServerBanDef(
             int? id,
@@ -39,6 +41,8 @@ namespace Content.Server.Database
             string reason,
             NoteSeverity severity,
             NetUserId? banningAdmin,
+            string? banningAdminName,
+            int round,
             ServerUnbanDef? unban)
         {
             if (userId == null && address == null && hwId == null)
@@ -64,6 +68,8 @@ namespace Content.Server.Database
             Reason = reason;
             Severity = severity;
             BanningAdmin = banningAdmin;
+            BanningAdminName = banningAdminName;
+            StatedRound = round;
             Unban = unban;
         }
 
@@ -78,19 +84,16 @@ namespace Content.Server.Database
             }
             else
             {
-                var appeal = cfg.GetCVar(CCVars.InfoLinksAppeal);
-                expires = !string.IsNullOrWhiteSpace(appeal)
-                    ? loc.GetString("ban-banned-permanent-appeal", ("link", appeal))
-                    : loc.GetString("ban-banned-permanent");
+                expires = loc.GetString("ban-banned-permanent");
             }
 
             return $"""
                    {loc.GetString("ban-banned-1")}
-                   {loc.GetString("ban-banned-2", ("adminName", GetUsername(BanningAdmin.ToString())))}
-                   {loc.GetString("ban-banned-3", ("reason", Reason))}
+                   {loc.GetString("ban-banned-4", ("admin", BanningAdminName ?? "Console"))}
+                   {loc.GetString("ban-banned-6", ("round", StatedRound != 0 ? StatedRound : loc.GetString("ban-banned-7")))}
+                   {loc.GetString("ban-banned-2", ("reason", Reason))}
                    {expires}
-                   {loc.GetString("ban-banned-4")}
-                   {loc.GetString("ban-banned-5")}
+                   {loc.GetString("ban-banned-3")}
                    """;
         }
 

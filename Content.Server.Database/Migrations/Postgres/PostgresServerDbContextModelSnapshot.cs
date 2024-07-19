@@ -306,10 +306,6 @@ namespace Content.Server.Database.Migrations.Postgres
                         .HasColumnType("boolean")
                         .HasColumnName("secret");
 
-                    b.Property<int>("Severity")
-                        .HasColumnType("integer")
-                        .HasColumnName("severity");
-
                     b.HasKey("Id")
                         .HasName("PK_admin_notes");
 
@@ -321,6 +317,10 @@ namespace Content.Server.Database.Migrations.Postgres
 
                     b.HasIndex("PlayerUserId")
                         .HasDatabaseName("IX_admin_notes_player_user_id");
+
+                    b.Property<int>("Severity")
+                        .HasColumnType("integer")
+                        .HasColumnName("severity");    
 
                     b.HasIndex("RoundId")
                         .HasDatabaseName("IX_admin_notes_round_id");
@@ -1043,6 +1043,10 @@ namespace Content.Server.Database.Migrations.Postgres
                         .HasColumnType("uuid")
                         .HasColumnName("banning_admin");
 
+                    b.Property<string>("BanningAdminName")
+                        .HasColumnType("text")
+                        .HasColumnName("banning_admin_name");
+
                     b.Property<int>("ExemptFlags")
                         .HasColumnType("integer")
                         .HasColumnName("exempt_flags");
@@ -1087,6 +1091,10 @@ namespace Content.Server.Database.Migrations.Postgres
                     b.Property<int>("Severity")
                         .HasColumnType("integer")
                         .HasColumnName("severity");
+
+                    b.Property<int>("StatedRound")
+                        .HasColumnType("integer")
+                        .HasColumnName("stated_round");
 
                     b.HasKey("Id")
                         .HasName("PK_server_ban");
