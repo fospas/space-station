@@ -3,9 +3,6 @@ using Robust.Shared.Network;
 
 namespace Content.Server.Cats.CryoTeleport;
 
-/// <summary>
-/// This is used for...
-/// </summary>
 [RegisterComponent]
 public sealed partial class StationCryoTeleportComponent : Component
 {
