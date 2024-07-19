@@ -46,8 +46,8 @@ public static class BanPanelEuiStateMsg
             Reason = reason;
             Severity = severity;
             Roles = roles;
-            StatedRound = statedRound;
             Erase = erase;
+            StatedRound = statedRound;
         }
     }
 
