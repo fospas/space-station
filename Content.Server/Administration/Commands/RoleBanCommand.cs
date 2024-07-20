@@ -1,18 +1,17 @@
-﻿using System.Linq;
-using System.Net.Http;
-using System.Text;
-using System.Text.Json;
+﻿﻿using System.Linq;
 using Content.Server.Administration.Managers;
-using Content.Server.Database;
-using Content.Server.Discord;
+using Content.Server.Discord.Webhooks;
 using Content.Server.GameTicking;
 using Content.Shared.Administration;
 using Content.Shared.CCVar;
-using Content.Shared.Database;
 using Content.Shared.Roles;
-using Robust.Shared.Configuration;
+using Robust.Server.Player;
 using Robust.Shared.Console;
-using Robust.Shared.Player;
+using Robust.Shared.Configuration;
+using System.Net.Http;
+using Content.Server.Database;
+using System.Text.Json;
+using System.Text;
 
 namespace Content.Server.Administration.Commands;
 
@@ -20,30 +19,40 @@ namespace Content.Server.Administration.Commands;
 public sealed class RoleBanCommand : IConsoleCommand
 {
     [Dependency] private readonly IPlayerLocator _locator = default!;
-    [Dependency] private readonly IBanManager _bans = default!;
-    [Dependency] private readonly IConfigurationManager _cfg = default!;
-    [Dependency] private readonly IServerDbManager _dbManager = default!;
-    [Dependency] private readonly IEntitySystemManager _entitySystemManager = default!;
-    private readonly HttpClient _httpClient = new();
+    [Dependency] private readonly RoleBanManager _bans = default!;
 
     public string Command => "roleban";
     public string Description => Loc.GetString("cmd-roleban-desc");
     public string Help => Loc.GetString("cmd-roleban-help");
-    string webhookUrl = _cfg.GetCVar(CCVars.DiscordBansWebhook);
-    string  serverName = _cfg.GetCVar(CCVars.GameHostName);
 
+    [Dependency] private readonly IConfigurationManager _cfg = default!;
+    [Dependency] private readonly IEntitySystemManager _entitySystemManager = default!;
 
+    private readonly HttpClient _httpClient = new();
     public async void Execute(IConsoleShell shell, string argStr, string[] args)
     {
+        var player = shell.Player as IPlayerSession;
+        var webhookUrl = _cfg.GetCVar(CCVars.DiscordBansWebhook);
+        var serverName = _cfg.GetCVar(CCVars.GameHostName);
+        var dbMan = IoCManager.Resolve<IServerDbManager>();
+
+        serverName = serverName[..Math.Min(serverName.Length, 1500)];
+
+        var gameTicker = _entitySystemManager.GetEntitySystem<GameTicker>();
+        var round = gameTicker.RunLevel switch
+        {
+            GameRunLevel.PreRoundLobby => gameTicker.RoundId == 0
+                ? "pre-round lobby after server restart" // first round after server restart has ID == 0
+                : $"pre-round lobby for round {gameTicker.RoundId + 1}",
+            GameRunLevel.InRound => $"round {gameTicker.RoundId}",
+            GameRunLevel.PostRound => $"post-round {gameTicker.RoundId}",
+            _ => throw new ArgumentOutOfRangeException(nameof(gameTicker.RunLevel), $"{gameTicker.RunLevel} was not matched."),
+        };
+
         string target;
         string job;
         string reason;
         uint minutes;
-        if (!Enum.TryParse(_cfg.GetCVar(CCVars.RoleBanDefaultSeverity), out NoteSeverity severity))
-        {
-            Logger.WarningS("admin.role_ban", "Role ban severity could not be parsed from config! Defaulting to medium.");
-            severity = NoteSeverity.Medium;
-        }
 
         switch (args.Length)
         {
@@ -65,57 +74,22 @@ public sealed class RoleBanCommand : IConsoleCommand
                 }
 
                 break;
-            case 5:
-                target = args[0];
-                job = args[1];
-                reason = args[2];
-
-                if (!uint.TryParse(args[3], out minutes))
-                {
-                    shell.WriteError(Loc.GetString("cmd-roleban-minutes-parse", ("time", args[3]), ("help", Help)));
-                    return;
-                }
-
-                if (!Enum.TryParse(args[4], ignoreCase: true, out severity))
-                {
-                    shell.WriteLine(Loc.GetString("cmd-roleban-severity-parse", ("severity", args[4]), ("help", Help)));
-                    return;
-                }
-
-                break;
             default:
                 shell.WriteError(Loc.GetString("cmd-roleban-arg-count"));
                 shell.WriteLine(Help);
                 return;
         }
 
-
-        var dbMan = IoCManager.Resolve<IServerDbManager>();
-
-        serverName = serverName[..Math.Min(serverName.Length, 1500)];
-
-        var gameTicker = _entitySystemManager.GetEntitySystem<GameTicker>();
-        var round = gameTicker.RunLevel switch
-        {
-            GameRunLevel.PreRoundLobby => gameTicker.RoundId == 0
-                ? "pre-round lobby after server restart" // first round after server restart has ID == 0
-                : $"pre-round lobby for round {gameTicker.RoundId + 1}",
-            GameRunLevel.InRound => $"round {gameTicker.RoundId}",
-            GameRunLevel.PostRound => $"post-round {gameTicker.RoundId}",
-            _ => throw new ArgumentOutOfRangeException(nameof(gameTicker.RunLevel), $"{gameTicker.RunLevel} was not matched."),
-        };
-
         var located = await _locator.LookupIdByNameOrIdAsync(target);
+
         if (located == null)
         {
             shell.WriteError(Loc.GetString("cmd-roleban-name-parse"));
             return;
         }
 
-        var targetUid = located.UserId;
-        var targetHWid = located.LastHWId;
-
-        _bans.CreateRoleBan(targetUid, located.Username, shell.Player?.UserId, null, targetHWid, job, minutes, severity, reason, DateTimeOffset.UtcNow);
+        _bans.CreateJobBan(shell, located, job, reason, minutes);
+        _bans.SendRoleBans(located);
 
         DateTimeOffset? expires = null;
         if (minutes > 0)
@@ -125,19 +99,19 @@ public sealed class RoleBanCommand : IConsoleCommand
 
         var roleBanId = await dbMan.GetLastServerRoleBanId();
 
-        if (!string.IsNullOrEmpty(webhookUrl))
+        if (webhookUrl != null)
         {
             var payload = new WebhookPayload
             {
                 Username = "Это роль-бан",
                 AvatarUrl = "",
-                Embeds = new List<WebhookEmbed>
+                Embeds = new List<Embed>
                 {
-                    new WebhookEmbed
+                    new Embed
                     {
                         Color = 0xffa500,
-                        Description = GenerateBanDescription(roleBanId, target, shell.Player, minutes, reason, expires, job),
-                        Footer = new WebhookEmbedFooter
+                        Description = GenerateBanDescription(roleBanId, target, player, minutes, reason, expires, job),
+                        Footer = new EmbedFooter
                         {
                             Text = $"{serverName} ({round})"
                         }
@@ -162,14 +136,6 @@ public sealed class RoleBanCommand : IConsoleCommand
             new("43800", Loc.GetString("cmd-roleban-hint-duration-6")),
         };
 
-        var severities = new CompletionOption[]
-        {
-            new("none", Loc.GetString("admin-note-editor-severity-none")),
-            new("minor", Loc.GetString("admin-note-editor-severity-low")),
-            new("medium", Loc.GetString("admin-note-editor-severity-medium")),
-            new("high", Loc.GetString("admin-note-editor-severity-high")),
-        };
-
         return args.Length switch
         {
             1 => CompletionResult.FromHintOptions(CompletionHelper.SessionNames(),
@@ -178,12 +144,11 @@ public sealed class RoleBanCommand : IConsoleCommand
                 Loc.GetString("cmd-roleban-hint-2")),
             3 => CompletionResult.FromHint(Loc.GetString("cmd-roleban-hint-3")),
             4 => CompletionResult.FromHintOptions(durOpts, Loc.GetString("cmd-roleban-hint-4")),
-            5 => CompletionResult.FromHintOptions(severities, Loc.GetString("cmd-roleban-hint-5")),
             _ => CompletionResult.Empty
         };
     }
 
-    private string GenerateBanDescription(int banId, string target, ICommonSession? session, uint minutes, string reason, DateTimeOffset? expires, string job)
+    private string GenerateBanDescription(int banId, string target, IPlayerSession? player, uint minutes, string reason, DateTimeOffset? expires, string job)
     {
         var builder = new StringBuilder();
 
@@ -216,9 +181,9 @@ public sealed class RoleBanCommand : IConsoleCommand
 
         builder.Append($"**Наказание выдал(-а):** ");
 
-        if (session != null)
+        if (player != null)
         {
-            builder.AppendLine($"*{session.Name}*");
+            builder.AppendLine($"*{player.Name}*");
         }
         else
         {

@@ -415,6 +415,8 @@ namespace Content.Server.Database
             ImmutableArray<byte>? hwId,
             bool includeUnbanned);
 
+        public abstract Task<int> GetLastServerBanId();
+
         public abstract Task AddServerBanAsync(ServerBanDef serverBan);
         public abstract Task AddServerUnbanAsync(ServerUnbanDef serverUnban);
 
@@ -506,6 +508,8 @@ namespace Content.Server.Database
             NetUserId? userId,
             ImmutableArray<byte>? hwId,
             bool includeUnbanned);
+
+        public abstract Task<int> GetLastServerRoleBanId();
 
         public abstract Task<ServerRoleBanDef> AddServerRoleBanAsync(ServerRoleBanDef serverRoleBan);
         public abstract Task AddServerRoleUnbanAsync(ServerRoleUnbanDef serverRoleUnban);

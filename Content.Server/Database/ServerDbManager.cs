@@ -91,6 +91,8 @@ namespace Content.Server.Database
             ImmutableArray<byte>? hwId,
             bool includeUnbanned=true);
 
+        Task<int> GetLastServerBanId();
+
         Task AddServerBanAsync(ServerBanDef serverBan);
         Task AddServerUnbanAsync(ServerUnbanDef serverBan);
 
@@ -144,6 +146,8 @@ namespace Content.Server.Database
             NetUserId? userId,
             ImmutableArray<byte>? hwId,
             bool includeUnbanned = true);
+
+        Task<int> GetLastServerRoleBanId();
 
         Task<ServerRoleBanDef> AddServerRoleBanAsync(ServerRoleBanDef serverBan);
         Task AddServerRoleUnbanAsync(ServerRoleUnbanDef serverBan);
@@ -441,6 +445,12 @@ namespace Content.Server.Database
             return RunDbCommand(() => _db.GetServerBansAsync(address, userId, hwId, includeUnbanned));
         }
 
+        public Task<int> GetLastServerBanId()
+        {
+            DbReadOpsMetric.Inc();
+            return RunDbCommand(() => _db.GetLastServerBanId());
+        }
+
         public Task AddServerBanAsync(ServerBanDef serverBan)
         {
             DbWriteOpsMetric.Inc();
@@ -492,6 +502,12 @@ namespace Content.Server.Database
         {
             DbWriteOpsMetric.Inc();
             return RunDbCommand(() => _db.AddServerRoleBanAsync(serverRoleBan));
+        }
+
+        public Task<int> GetLastServerRoleBanId()
+        {
+            DbReadOpsMetric.Inc();
+            return RunDbCommand(() => _db.GetLastServerRoleBanId());
         }
 
         public Task AddServerRoleUnbanAsync(ServerRoleUnbanDef serverRoleUnban)
