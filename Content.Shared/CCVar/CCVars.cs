@@ -468,6 +468,18 @@ namespace Content.Shared.CCVar
             CVarDef.Create("discord.ahelp_footer_icon", string.Empty, CVar.SERVERONLY);
 
         /// <summary>
+        /// URL of the Discord webhook which will relay ban messages.
+        /// </summary>
+        public static readonly CVarDef<string> DiscordBansWebhook =
+             CVarDef.Create("discord.bans_webhook", string.Empty, CVar.SERVERONLY | CVar.CONFIDENTIAL);
+
+        /// <summary>
+        /// The name of the game server.
+        /// </summary>
+        public static readonly CVarDef<string> GameHostName =
+            CVarDef.Create("game.host_name", "Default Server Name", CVar.SERVERONLY);
+
+        /// <summary>
         /// The avatar to use for the webhook. Should be an URL.
         /// </summary>
         public static readonly CVarDef<string> DiscordAHelpAvatar =
@@ -478,6 +490,7 @@ namespace Content.Shared.CCVar
         /// </summary>
         public static readonly CVarDef<string> DiscordVoteWebhook =
             CVarDef.Create("discord.vote_webhook", string.Empty, CVar.SERVERONLY);
+      
 
         /// URL of the Discord webhook which will relay round restart messages.
         /// </summary>
