@@ -236,11 +236,11 @@ namespace Content.Server.Database
                 unban.UnbanTime);
         }
 
-        public override async Task AddServerBanAsync(ServerBanDef serverBan)
+        public override async Task<int> AddServerBanAsync(ServerBanDef serverBan)
         {
             await using var db = await GetDbImpl();
 
-            db.PgDbContext.Ban.Add(new ServerBan
+            var ban = db.PgDbContext.Ban.Add(new ServerBan
             {
                 Address = serverBan.Address.ToNpgsqlInet(),
                 HWId = serverBan.HWId?.ToArray(),
@@ -255,6 +255,8 @@ namespace Content.Server.Database
             });
 
             await db.PgDbContext.SaveChangesAsync();
+
+            return ban.Entity.Id;
         }
 
         public override async Task AddServerUnbanAsync(ServerUnbanDef serverUnban)

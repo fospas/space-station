@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Content.Server.Chat.Managers;
 using Content.Server.Database;
 using Content.Server.GameTicking;
+using Content.Server._Cats.Discord;
 using Content.Shared.CCVar;
 using Content.Shared.Database;
 using Content.Shared.Players;
@@ -32,6 +33,7 @@ public sealed class BanManager : IBanManager, IPostInjectInit
     [Dependency] private readonly IChatManager _chat = default!;
     [Dependency] private readonly INetManager _netManager = default!;
     [Dependency] private readonly ILogManager _logManager = default!;
+    [Dependency] private readonly DiscordBanPostManager _discordBanPostManager = default!;
 
     private ISawmill _sawmill = default!;
 
@@ -59,7 +61,7 @@ public sealed class BanManager : IBanManager, IPostInjectInit
         SendRoleBans(e.Session);
     }
 
-    private async Task<bool> AddRoleBan(ServerRoleBanDef banDef)
+    private async Task<ServerRoleBanDef> AddRoleBan(ServerRoleBanDef banDef)
     {
         banDef = await _db.AddServerRoleBanAsync(banDef);
 
@@ -68,7 +70,7 @@ public sealed class BanManager : IBanManager, IPostInjectInit
             _cachedRoleBans.GetOrNew(banDef.UserId.Value).Add(banDef);
         }
 
-        return true;
+        return banDef;
     }
 
     public HashSet<string>? GetRoleBans(NetUserId playerUserId)
@@ -140,7 +142,7 @@ public sealed class BanManager : IBanManager, IPostInjectInit
             banningAdmin,
             null);
 
-        await _db.AddServerBanAsync(banDef);
+        var banId = await _db.AddServerBanAsync(banDef);
         var adminName = banningAdmin == null
             ? Loc.GetString("system-user")
             : (await _db.GetPlayerRecordByUserId(banningAdmin.Value))?.LastSeenUserName ?? Loc.GetString("system-user");
@@ -167,6 +169,8 @@ public sealed class BanManager : IBanManager, IPostInjectInit
 
         _sawmill.Info(logMessage);
         _chat.SendAdminAlert(logMessage);
+
+        await _discordBanPostManager.PostUserBanInfo(banId);
 
         // If we're not banning a player we don't care about disconnecting people
         if (target == null)
@@ -217,10 +221,17 @@ public sealed class BanManager : IBanManager, IPostInjectInit
             null,
             role);
 
-        if (!await AddRoleBan(banDef))
+        banDef = await AddRoleBan(banDef);
+
+        if (banDef is null)
         {
             _chat.SendAdminAlert(Loc.GetString("cmd-roleban-existing", ("target", targetUsername ?? "null"), ("role", role)));
             return;
+        }
+
+        if (banDef.Id.HasValue)
+        {
+            await _discordBanPostManager.PostUserJobBanInfo(banDef.Id.Value, targetUsername);
         }
 
         var length = expires == null ? Loc.GetString("cmd-roleban-inf") : Loc.GetString("cmd-roleban-until", ("expires", expires));

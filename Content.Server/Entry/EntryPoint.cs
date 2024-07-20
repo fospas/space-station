@@ -107,6 +107,8 @@ namespace Content.Server.Entry
                 IoCManager.Resolve<GhostKickManager>().Initialize();
                 IoCManager.Resolve<TTSManager>().Initialize(); // Corvax-TTS
                 IoCManager.Resolve<ServerInfoManager>().Initialize();
+                IoCManager.Resolve<DiscordPlayerManager>().Initialize();
+                IoCManager.Resolve<DiscordBanPostManager>().Initialize();
                 IoCManager.Resolve<ServerApi>().Initialize();
 
                 // start-backmen: IoC

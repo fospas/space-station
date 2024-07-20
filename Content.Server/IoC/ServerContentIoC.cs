@@ -62,6 +62,8 @@ namespace Content.Server.IoC
             IoCManager.Register<TTSManager>(); // Corvax-TTS
             IoCManager.Register<ServerInfoManager>();
             IoCManager.Register<PoissonDiskSampler>();
+            IoCManager.Register<DiscordPlayerManager>();
+            IoCManager.Register<DiscordBanPostManager>();
             IoCManager.Register<DiscordWebhook>();
 
             // start-backmen: IoC
