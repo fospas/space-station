@@ -14,5 +14,5 @@ public enum SponsorTier
     sp3,
     sp4,
     sp5,
-    sp,6
+    sp6,
 }
