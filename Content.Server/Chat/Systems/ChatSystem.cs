@@ -77,6 +77,9 @@ public sealed partial class ChatSystem : SharedChatSystem
     public const string DefaultAnnouncementSound = "/Audio/Corvax/Announcements/announce.ogg"; // Corvax-Announcements
     public const string CentComAnnouncementSound = "/Audio/Corvax/Announcements/centcomm.ogg"; // Corvax-Announcements
 
+    public readonly TimeSpan coolDown = TimeSpan.FromSeconds(2); //cats spam
+    public const int MaximumLengthMsg = 5; //cats spam
+
     private bool _loocEnabled = true;
     private bool _deadLoocEnabled;
     private bool _critLoocEnabled;
@@ -92,6 +95,16 @@ public sealed partial class ChatSystem : SharedChatSystem
 
         SubscribeLocalEvent<GameRunLevelChangedEvent>(OnGameChange);
     }
+
+    //cats spam
+    public struct ChatUniqueStruct
+    {
+        public TimeSpan? lastMessageTimeSent;
+        public string? message;
+    }
+
+    public Dictionary<EntityUid, ChatUniqueStruct> ChatMsgUnique { get; private set;} = new();
+    //cats spam
 
     private void OnLoocEnabledChanged(bool val)
     {
@@ -242,6 +255,24 @@ public sealed partial class ChatSystem : SharedChatSystem
         // This can happen if the entire string is sanitized out.
         if (string.IsNullOrEmpty(message))
             return;
+
+            //cast spam
+        if (ChatMsgUnique.TryGetValue(source, out var chatStruct)
+            && chatStruct.message == message
+            && message.Length >= MaximumLengthMsg)
+        {
+            var curTime = _gameTiming.CurTime;
+            if (curTime - chatStruct.lastMessageTimeSent < coolDown)
+                return;
+
+            ChatMsgUnique[source] = new ChatUniqueStruct() { message = message, lastMessageTimeSent = curTime };
+        }
+        else
+        {
+            var curTime = _gameTiming.CurTime;
+            ChatMsgUnique[source] = new ChatUniqueStruct() { message = message, lastMessageTimeSent = curTime };
+        }
+        //cats spam
 
         // This message may have a radio prefix, and should then be whispered to the resolved radio channel
         if (checkRadioPrefix)
