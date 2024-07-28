@@ -4,9 +4,9 @@
   parent: Clothing
   id: ClothingUnderSocksBase
   components:
-    - type: Clothing
-      slots:
-        - SOCKS
+#    - type: Clothing
+#      slots:
+#        - SOCKS
     - type: Sprite
       # noRot: true
       state: icon

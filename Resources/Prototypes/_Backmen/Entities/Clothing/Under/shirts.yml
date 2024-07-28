@@ -4,9 +4,9 @@
   parent: Clothing
   id: ClothingUnderShirtBase
   components:
-    - type: Clothing
-      slots:
-        - UNDERSHIRT
+#    - type: Clothing
+#      slots:
+#        - UNDERSHIRT
     - type: Sprite
       # noRot: true
       state: icon
