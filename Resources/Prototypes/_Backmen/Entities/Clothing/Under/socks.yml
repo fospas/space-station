@@ -25,9 +25,9 @@
       state: assblastusa_knee-ICON
     - type: Clothing
       sprite: Backmen/Clothing/Under/socks.rsi
-      clothingVisuals:
-        socks:
-          - state: assblastusa_knee
+      #clothingVisuals:
+#        socks:
+#          - state: assblastusa_knee
     - type: TemperatureProtection
       coefficient: 0.85
 
@@ -42,9 +42,9 @@
       state: assblastusa_thigh-ICON
     - type: Clothing
       sprite: Backmen/Clothing/Under/socks.rsi
-      clothingVisuals:
-        socks:
-          - state: assblastusa_thigh
+      #clothingVisuals:
+#        socks:
+#          - state: assblastusa_thigh
     - type: TemperatureProtection
       coefficient: 0.80
 
@@ -59,9 +59,9 @@
       state: bee_knee-ICON
     - type: Clothing
       sprite: Backmen/Clothing/Under/socks.rsi
-      clothingVisuals:
-        socks:
-          - state: bee_knee
+      #clothingVisuals:
+#        socks:
+#          - state: bee_knee
     - type: TemperatureProtection
       coefficient: 0.85
 
@@ -76,9 +76,9 @@
       state: bee_norm-ICON
     - type: Clothing
       sprite: Backmen/Clothing/Under/socks.rsi
-      clothingVisuals:
-        socks:
-          - state: bee_norm
+      #clothingVisuals:
+#        socks:
+#          - state: bee_norm
 
 - type: entity
   parent: ClothingUnderSocksBase
@@ -91,9 +91,9 @@
       state: bee_thigh-ICON
     - type: Clothing
       sprite: Backmen/Clothing/Under/socks.rsi
-      clothingVisuals:
-        socks:
-          - state: bee_thigh
+      #clothingVisuals:
+#        socks:
+#          - state: bee_thigh
     - type: TemperatureProtection
       coefficient: 0.80
 
@@ -108,9 +108,9 @@
       state: candycaneg_knee-ICON
     - type: Clothing
       sprite: Backmen/Clothing/Under/socks.rsi
-      clothingVisuals:
-        socks:
-          - state: candycaneg_knee
+      #clothingVisuals:
+#        socks:
+#          - state: candycaneg_knee
     - type: TemperatureProtection
       coefficient: 0.85
 
@@ -125,9 +125,9 @@
       state: candycaneg_norm-ICON
     - type: Clothing
       sprite: Backmen/Clothing/Under/socks.rsi
-      clothingVisuals:
-        socks:
-          - state: candycaneg_norm
+      #clothingVisuals:
+#        socks:
+#          - state: candycaneg_norm
 
 - type: entity
   parent: ClothingUnderSocksBase
@@ -140,9 +140,9 @@
       state: candycaneg_thigh-ICON
     - type: Clothing
       sprite: Backmen/Clothing/Under/socks.rsi
-      clothingVisuals:
-        socks:
-          - state: candycaneg_thigh
+      #clothingVisuals:
+#        socks:
+#          - state: candycaneg_thigh
     - type: TemperatureProtection
       coefficient: 0.80
 
@@ -157,9 +157,9 @@
       state: candycaner_knee-ICON
     - type: Clothing
       sprite: Backmen/Clothing/Under/socks.rsi
-      clothingVisuals:
-        socks:
-          - state: candycaner_knee
+      #clothingVisuals:
+#        socks:
+#          - state: candycaner_knee
     - type: TemperatureProtection
       coefficient: 0.85
 
@@ -174,9 +174,9 @@
       state: candycaner_norm-ICON
     - type: Clothing
       sprite: Backmen/Clothing/Under/socks.rsi
-      clothingVisuals:
-        socks:
-          - state: candycaner_norm
+      #clothingVisuals:
+#        socks:
+#          - state: candycaner_norm
 
 - type: entity
   parent: ClothingUnderSocksBase
@@ -189,9 +189,9 @@
       state: candycaner_thigh-ICON
     - type: Clothing
       sprite: Backmen/Clothing/Under/socks.rsi
-      clothingVisuals:
-        socks:
-          - state: candycaner_thigh
+      #clothingVisuals:
+#        socks:
+#          - state: candycaner_thigh
     - type: TemperatureProtection
       coefficient: 0.80
 
@@ -206,9 +206,9 @@
       state: christmas_knee-ICON
     - type: Clothing
       sprite: Backmen/Clothing/Under/socks.rsi
-      clothingVisuals:
-        socks:
-          - state: christmas_knee
+      #clothingVisuals:
+#        socks:
+#          - state: christmas_knee
     - type: TemperatureProtection
       coefficient: 0.85
 
@@ -223,9 +223,9 @@
       state: christmas_norm-ICON
     - type: Clothing
       sprite: Backmen/Clothing/Under/socks.rsi
-      clothingVisuals:
-        socks:
-          - state: christmas_norm
+      #clothingVisuals:
+#        socks:
+#          - state: christmas_norm
 
 - type: entity
   parent: ClothingUnderSocksBase
@@ -238,9 +238,9 @@
       state: christmas_thigh-ICON
     - type: Clothing
       sprite: Backmen/Clothing/Under/socks.rsi
-      clothingVisuals:
-        socks:
-          - state: christmas_thigh
+      #clothingVisuals:
+#        socks:
+#          - state: christmas_thigh
     - type: TemperatureProtection
       coefficient: 0.80
 
@@ -255,9 +255,9 @@
       state: commie_knee-ICON
     - type: Clothing
       sprite: Backmen/Clothing/Under/socks.rsi
-      clothingVisuals:
-        socks:
-          - state: commie_knee
+      #clothingVisuals:
+#        socks:
+#          - state: commie_knee
     - type: TemperatureProtection
       coefficient: 0.85
 
@@ -272,9 +272,9 @@
       state: commie_thigh-ICON
     - type: Clothing
       sprite: Backmen/Clothing/Under/socks.rsi
-      clothingVisuals:
-        socks:
-          - state: commie_thigh
+      #clothingVisuals:
+#        socks:
+#          - state: commie_thigh
     - type: TemperatureProtection
       coefficient: 0.80
 
@@ -303,9 +303,9 @@
       state: garter-ICON
     - type: Clothing
       sprite: Backmen/Clothing/Under/socks.rsi
-      clothingVisuals:
-        socks:
-          - state: garter
+      #clothingVisuals:
+#        socks:
+#          - state: garter
     - type: TemperatureProtection
       coefficient: 0.80
 
@@ -320,9 +320,9 @@
       state: rainbow_knee-ICON
     - type: Clothing
       sprite: Backmen/Clothing/Under/socks.rsi
-      clothingVisuals:
-        socks:
-          - state: rainbow_knee
+      #clothingVisuals:
+#        socks:
+#          - state: rainbow_knee
     - type: TemperatureProtection
       coefficient: 0.85
 
@@ -337,9 +337,9 @@
       state: rainbow_thigh-ICON
     - type: Clothing
       sprite: Backmen/Clothing/Under/socks.rsi
-      clothingVisuals:
-        socks:
-          - state: rainbow_thigh
+      #clothingVisuals:
+#        socks:
+#          - state: rainbow_thigh
     - type: TemperatureProtection
       coefficient: 0.80
 
@@ -355,9 +355,9 @@
       state: socks_knee-ICON
     - type: Clothing
       sprite: Backmen/Clothing/Under/socks.rsi
-      clothingVisuals:
-        socks:
-          - state: socks_knee
+      #clothingVisuals:
+#        socks:
+#          - state: socks_knee
     - type: TemperatureProtection
       coefficient: 0.85
             # color: "#FF0000FF" #WOOOOO
@@ -374,9 +374,9 @@
       state: socks_norm-ICON
     - type: Clothing
       sprite: Backmen/Clothing/Under/socks.rsi
-      clothingVisuals:
-        socks:
-          - state: socks_norm
+      #clothingVisuals:
+#        socks:
+#          - state: socks_norm
 
 - type: entity
   parent: ClothingUnderSocksBase
@@ -390,9 +390,9 @@
       state: socks_short-ICON
     - type: Clothing
       sprite: Backmen/Clothing/Under/socks.rsi
-      clothingVisuals:
-        socks:
-          - state: socks_short
+      #clothingVisuals:
+#        socks:
+#          - state: socks_short
     - type: TemperatureProtection
       coefficient: 0.95
 
@@ -408,9 +408,9 @@
       state: socks_thigh-ICON
     - type: Clothing
       sprite: Backmen/Clothing/Under/socks.rsi
-      clothingVisuals:
-        socks:
-          - state: socks_thigh
+      #clothingVisuals:
+#        socks:
+#          - state: socks_thigh
     - type: TemperatureProtection
       coefficient: 0.80
 
@@ -425,9 +425,9 @@
       state: stockings_blue-ICON
     - type: Clothing
       sprite: Backmen/Clothing/Under/socks.rsi
-      clothingVisuals:
-        socks:
-          - state: stockings_blue
+      #clothingVisuals:
+#        socks:
+#          - state: stockings_blue
     - type: TemperatureProtection
       coefficient: 0.80
 
@@ -442,9 +442,9 @@
       state: stockings_cyan-ICON
     - type: Clothing
       sprite: Backmen/Clothing/Under/socks.rsi
-      clothingVisuals:
-        socks:
-          - state: stockings_cyan
+      #clothingVisuals:
+#        socks:
+#          - state: stockings_cyan
     - type: TemperatureProtection
       coefficient: 0.80
 
@@ -459,9 +459,9 @@
       state: stockings_dpink-ICON
     - type: Clothing
       sprite: Backmen/Clothing/Under/socks.rsi
-      clothingVisuals:
-        socks:
-          - state: stockings_dpink
+      #clothingVisuals:
+#        socks:
+#          - state: stockings_dpink
     - type: TemperatureProtection
       coefficient: 0.80
 
@@ -476,9 +476,9 @@
       state: stockings_green-ICON
     - type: Clothing
       sprite: Backmen/Clothing/Under/socks.rsi
-      clothingVisuals:
-        socks:
-          - state: stockings_green
+      #clothingVisuals:
+#        socks:
+#          - state: stockings_green
     - type: TemperatureProtection
       coefficient: 0.80
 
@@ -494,9 +494,9 @@
       state: stockings_lpink-ICON
     - type: Clothing
       sprite: Backmen/Clothing/Under/socks.rsi
-      clothingVisuals:
-        socks:
-          - state: stockings_lpink
+      #clothingVisuals:
+#        socks:
+#          - state: stockings_lpink
     - type: TemperatureProtection
       coefficient: 0.80
 
@@ -511,9 +511,9 @@
       state: stockings_orange-ICON
     - type: Clothing
       sprite: Backmen/Clothing/Under/socks.rsi
-      clothingVisuals:
-        socks:
-          - state: stockings_orange
+      #clothingVisuals:
+#        socks:
+#          - state: stockings_orange
     - type: TemperatureProtection
       coefficient: 0.80
 
@@ -528,9 +528,9 @@
       state: stockings_purple-ICON
     - type: Clothing
       sprite: Backmen/Clothing/Under/socks.rsi
-      clothingVisuals:
-        socks:
-          - state: stockings_purple
+      #clothingVisuals:
+#        socks:
+#          - state: stockings_purple
     - type: TemperatureProtection
       coefficient: 0.80
 
@@ -545,9 +545,9 @@
       state: stockings_yellow-ICON
     - type: Clothing
       sprite: Backmen/Clothing/Under/socks.rsi
-      clothingVisuals:
-        socks:
-          - state: stockings_yellow
+      #clothingVisuals:
+#        socks:
+#          - state: stockings_yellow
     - type: TemperatureProtection
       coefficient: 0.80
 
@@ -563,9 +563,9 @@
       state: striped_knee-ICON
     - type: Clothing
       sprite: Backmen/Clothing/Under/socks.rsi
-      clothingVisuals:
-        socks:
-          - state: striped_knee
+      #clothingVisuals:
+#        socks:
+#          - state: striped_knee
     - type: TemperatureProtection
       coefficient: 0.85
 
@@ -581,9 +581,9 @@
       state: striped_thigh-ICON
     - type: Clothing
       sprite: Backmen/Clothing/Under/socks.rsi
-      clothingVisuals:
-        socks:
-          - state: striped_thigh
+      #clothingVisuals:
+#        socks:
+#          - state: striped_thigh
     - type: TemperatureProtection
       coefficient: 0.80
 
@@ -598,9 +598,9 @@
       state: thin_knee-ICON
     - type: Clothing
       sprite: Backmen/Clothing/Under/socks.rsi
-      clothingVisuals:
-        socks:
-          - state: thin_knee
+      #clothingVisuals:
+#        socks:
+#          - state: thin_knee
     - type: TemperatureProtection
       coefficient: 0.85
 
@@ -615,9 +615,9 @@
       state: thin_thigh-ICON
     - type: Clothing
       sprite: Backmen/Clothing/Under/socks.rsi
-      clothingVisuals:
-        socks:
-          - state: thin_thigh
+      #clothingVisuals:
+#        socks:
+#          - state: thin_thigh
     - type: TemperatureProtection
       coefficient: 0.80
 
@@ -632,9 +632,9 @@
       state: uk_knee-ICON
     - type: Clothing
       sprite: Backmen/Clothing/Under/socks.rsi
-      clothingVisuals:
-        socks:
-          - state: uk_knee
+      #clothingVisuals:
+#        socks:
+#          - state: uk_knee
     - type: TemperatureProtection
       coefficient: 0.85
 
@@ -649,8 +649,8 @@
       state: uk_thigh-ICON
     - type: Clothing
       sprite: Backmen/Clothing/Under/socks.rsi
-      clothingVisuals:
-        socks:
-          - state: uk_thigh
+      #clothingVisuals:
+#        socks:
+#          - state: uk_thigh
     - type: TemperatureProtection
       coefficient: 0.80
