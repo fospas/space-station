@@ -9,3 +9,7 @@
 - type: stationGoal
   id: StationGoalWeapon
   text: station-goal-weapon
+
+- type: stationGoal
+  id: stationgoalbluespaceharvester
+  text:   station-goal-bluespaceharvester
