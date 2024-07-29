@@ -260,13 +260,13 @@
       strippingWindowPos: 0,2
       displayName: Jumpsuit
   #backmen:underclothing-start
-    - name: undershirt
-      slotTexture: undershirt
-      slotFlags: UNDERSHIRT
-      stripTime: 8
-      uiWindowPos: 4,1
-      strippingWindowPos: 3,1
-      displayName: Undershirt
+#    - name: undershirt
+#      slotTexture: undershirt
+#      slotFlags: UNDERSHIRT
+#      stripTime: 8
+#      uiWindowPos: 4,1
+#      strippingWindowPos: 3,1
+#      displayName: Undershirt
 #    - name: underpants
 #      slotTexture: underpants
 #      slotFlags: UNDERPANTS
