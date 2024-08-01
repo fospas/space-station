@@ -91,6 +91,7 @@
         - SurveillanceCameraGeneral
         - SurveillanceCameraMedical
         - SurveillanceCameraCommand
+        - SurveillanceCameraEye
 
 - type: entity
   parent: SurveillanceCameraBase

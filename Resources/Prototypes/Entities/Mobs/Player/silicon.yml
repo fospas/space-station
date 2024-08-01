@@ -64,6 +64,23 @@
     - Binary
     - Common
   - type: DoAfter
+  - type: DeviceNetwork
+    deviceNetId: Wired
+    receiveFrequencyId: SurveillanceCameraEye
+    transmitFrequencyId: SurveillanceCamera
+  - type: SurveillanceCamera
+    networkSet: true
+  - type: Electrified
+    enabled: false
+    usesApcPower: true
+  - type: Eye
+  - type: WiredNetworkConnection
+  - type: DeviceNetworkRequiresPower
+  - type: Transform
+  - type: Electrified
+    enabled: true
+    usesApcPower: false
+  - type: ApcPowerReceiver
   - type: ComplexInteraction
   - type: Examiner
   - type: Puller
