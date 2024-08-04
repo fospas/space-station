@@ -115,14 +115,14 @@ namespace Content.Shared.CCVar
         ///     Close to how long you expect a round to last, so you'll probably have to tweak this on downstreams.
         /// </summary>
         public static readonly CVarDef<float>
-            EventsRampingAverageEndTime = CVarDef.Create("events.ramping_average_end_time", 40f, CVar.ARCHIVE | CVar.SERVERONLY);
+            EventsRampingAverageEndTime = CVarDef.Create("events.ramping_average_end_time", 52f, CVar.ARCHIVE | CVar.SERVERONLY);
 
         /// <summary>
         ///     Average ending chaos modifier for the ramping event scheduler.
         ///     Max chaos chosen for a round will deviate from this
         /// </summary>
         public static readonly CVarDef<float>
-            EventsRampingAverageChaos = CVarDef.Create("events.ramping_average_chaos", 6f, CVar.ARCHIVE | CVar.SERVERONLY);
+            EventsRampingAverageChaos = CVarDef.Create("events.ramping_average_chaos", 4.2f, CVar.ARCHIVE | CVar.SERVERONLY);
 
         /// <summary>
         ///     Minimum time between meteor swarms in minutes.
@@ -489,6 +489,30 @@ namespace Content.Shared.CCVar
         /// </summary>
         public static readonly CVarDef<string> DiscordRoundEndRoleWebhook =
             CVarDef.Create("discord.round_end_role", string.Empty, CVar.SERVERONLY);
+
+        /// <summary>
+        /// URL where all ban messages will be relayed
+        /// </summary>
+        public static readonly CVarDef<string> DiscordBanWebhook =
+            CVarDef.Create("discord.ban_webhook", "", CVar.SERVERONLY | CVar.CONFIDENTIAL);
+
+        /// <summary>
+        /// The server icon to use in the Discord ban embed footer.
+        /// </summary>
+        public static readonly CVarDef<string> DiscordBanFooterIcon =
+            CVarDef.Create("discord.ban_footer_icon", string.Empty, CVar.SERVERONLY);
+
+        /// <summary>
+        /// The avatar to use for the webhook. Should be an URL.
+        /// </summary>
+        public static readonly CVarDef<string> DiscordBanAvatar =
+            CVarDef.Create("discord.ban_avatar", string.Empty, CVar.SERVERONLY);
+
+        /// <summary>
+        /// URL of the Discord webhook which will relay last messages before death.
+        /// </summary>
+        public static readonly CVarDef<string> DiscordLastMessageBeforeDeathWebhook =
+            CVarDef.Create("discord.last_message_before_death_webhook", string.Empty, CVar.SERVERONLY | CVar.CONFIDENTIAL);
 
         /*
          * Tips
@@ -902,6 +926,15 @@ namespace Content.Shared.CCVar
         public static readonly CVarDef<bool> AdminBypassMaxPlayers =
             CVarDef.Create("admin.bypass_max_players", true, CVar.SERVERONLY);
 
+        /// <summary>
+        /// Determine if custom rank names are used.
+        /// If it is false, it'd use the actual rank name regardless of the individual's title.
+        /// </summary>
+        /// <seealso cref="AhelpAdminPrefix"/>
+        /// <seealso cref="AhelpAdminPrefixWebhook"/>
+        public static readonly CVarDef<bool> AdminUseCustomNamesAdminRank =
+            CVarDef.Create("admin.use_custom_names_admin_rank", true, CVar.SERVERONLY);
+
         /*
          * AHELP
          */
@@ -920,6 +953,24 @@ namespace Content.Shared.CCVar
         /// <seealso cref="AhelpRateLimitPeriod"/>
         public static readonly CVarDef<int> AhelpRateLimitCount =
             CVarDef.Create("ahelp.rate_limit_count", 10, CVar.SERVERONLY);
+
+        /// <summary>
+        /// Should the administrator's position be displayed in ahelp.
+        /// If it is is false, only the admin's ckey will be displayed in the ahelp.
+        /// </summary>
+        /// <seealso cref="AdminUseCustomNamesAdminRank"/>
+        /// <seealso cref="AhelpAdminPrefixWebhook"/>
+        public static readonly CVarDef<bool> AhelpAdminPrefix =
+            CVarDef.Create("ahelp.admin_prefix", true, CVar.SERVERONLY);
+
+        /// <summary>
+        /// Should the administrator's position be displayed in the webhook.
+        /// If it is is false, only the admin's ckey will be displayed in webhook.
+        /// </summary>
+        /// <seealso cref="AdminUseCustomNamesAdminRank"/>
+        /// <seealso cref="AhelpAdminPrefix"/>
+        public static readonly CVarDef<bool> AhelpAdminPrefixWebhook =
+            CVarDef.Create("ahelp.admin_prefix_webhook", true, CVar.SERVERONLY);
 
         /*
          * Explosions
@@ -1778,7 +1829,8 @@ namespace Content.Shared.CCVar
             CVarDef.Create("chat.max_message_length", 1000, CVar.SERVER | CVar.REPLICATED);
 
         public static readonly CVarDef<int> ChatMaxAnnouncementLength =
-            CVarDef.Create("chat.max_announcement_length", 256, CVar.SERVER | CVar.REPLICATED);
+        //    CVarDef.Create("chat.max_announcement_length", 256, CVar.SERVER | CVar.REPLICATED);    cats
+            CVarDef.Create("chat.max_announcement_length", 512, CVar.SERVER | CVar.REPLICATED);    
 
         public static readonly CVarDef<bool> ChatSanitizerEnabled =
             CVarDef.Create("chat.chat_sanitizer_enabled", true, CVar.SERVERONLY);

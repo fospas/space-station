@@ -1,3 +1,4 @@
+
 changeling-roundend-name = генокрад
 
 objective-issuer-hivemind = [color=orange]Коллективный разум[/color]
