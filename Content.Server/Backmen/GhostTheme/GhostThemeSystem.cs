@@ -1,22 +1,20 @@
 ﻿using System.Linq;
 using Content.Corvax.Interfaces.Server;
 using Content.Corvax.Interfaces.Shared;
-using Content.Server.Mind;
+using Content.Server.GameTicking;
 using Content.Shared.Backmen.GhostTheme;
 using Content.Shared.GameTicking;
 using Content.Shared.Ghost;
-using Content.Shared.Players;
+using Content.Shared._Cats.Events;
 using Robust.Server.Configuration;
-using Robust.Shared;
-using Robust.Shared.Network;
+using Robust.Server.Console;
 using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization.Manager;
-using Robust.Shared.Timing;
 
 #pragma warning disable CS0618 // Type or member is obsolete
 
-namespace Content.Server.Backmen.GhostTheme;
+namespace Content.Server.SharedContent;
 
 public sealed class GhostThemeSystem : EntitySystem
 {
@@ -24,11 +22,39 @@ public sealed class GhostThemeSystem : EntitySystem
     [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
     [Dependency] private readonly ISerializationManager _serialization = default!;
     [Dependency] private readonly IServerNetConfigurationManager _netConfigManager = default!;
+    [Dependency] private readonly IServerConsoleHost _console = default!;
+
+    private readonly Dictionary<string, bool> _respawnUsedDictionary = new();
 
     public override void Initialize()
     {
         base.Initialize();
         SubscribeLocalEvent<GhostComponent, PlayerAttachedEvent>(OnPlayerAttached);
+        SubscribeLocalEvent<GameRunLevelChangedEvent>(OnGameRunLevelChanged);
+        SubscribeNetworkEvent<RespawnRequestEvent>(OnGhostRespawnRequest);
+    }
+
+    private void OnGameRunLevelChanged(GameRunLevelChangedEvent ev)
+    {
+        if (ev.New == GameRunLevel.PreRoundLobby)
+        {
+            _respawnUsedDictionary.Clear();
+        }
+    }
+
+    private void OnGhostRespawnRequest(RespawnRequestEvent msg, EntitySessionEventArgs args)
+    {
+        if (args.SenderSession.AttachedEntity == null ||
+            !TryComp<GhostComponent>(args.SenderSession.AttachedEntity.Value, out var ghostComponent))
+            return;
+        if (_respawnUsedDictionary.ContainsKey(args.SenderSession.UserId.UserId.ToString()))
+        {
+            return;
+        }
+
+        if (ghostComponent.TimeOfDeath.CompareTo(ghostComponent.TimeOfDeath.Add(TimeSpan.FromMinutes(15))) is -1 or 0)
+            _console.ExecuteCommand($"respawn {args.SenderSession.Name}");
+        _respawnUsedDictionary.Add(args.SenderSession.UserId.UserId.ToString(), true);
     }
 
     private void OnPlayerAttached(EntityUid uid, GhostComponent component, PlayerAttachedEvent args)

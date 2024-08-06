@@ -21,7 +21,8 @@ namespace Content.Client.Stylesheets
 {
     public static class ResCacheExtension
     {
-        public static Font NotoStack(this IResourceCache resCache, string variation = "Regular", int size = 10, bool display = false)
+        public static Font NotoStack(this IResourceCache resCache, string variation = "Regular", int size = 10,
+            bool display = false)
         {
             var ds = display ? "Display" : "";
             var sv = variation.StartsWith("Bold", StringComparison.Ordinal) ? "Bold" : "Regular";
@@ -151,6 +152,12 @@ namespace Content.Client.Stylesheets
         public const string StyleClassButtonColorGreen = "ButtonColorGreen";
 
         public static readonly Color ChatBackgroundColor = Color.FromHex("#25252ADD");
+
+        //cats-start
+        public static readonly Color ButtonColorGoldDefault = Color.FromHex("#007BFF");
+        public static readonly Color ButtonColorGoldHovered = Color.FromHex("#0056b3");
+        public static readonly Color ButtonColorGoldPressed = Color.FromHex("#003d7a");
+        //cats-end
 
         //Bwoink
         public const string StyleClassPinButtonPinned = "pinButtonPinned";
@@ -1633,6 +1640,20 @@ namespace Content.Client.Stylesheets
                     {
                         new StyleProperty(TextureButton.StylePropertyTexture, resCache.GetTexture("/Textures/Interface/Bwoink/un_pinned.png"))
                     })
+
+                //Radium-start
+                Element<ContainerButton>().Class(ContainerButton.StyleClassButton).Class(ButtonGold)
+                    .Pseudo(ContainerButton.StylePseudoClassNormal)
+                    .Prop(Control.StylePropertyModulateSelf, ButtonColorGoldDefault),
+
+                Element<ContainerButton>().Class(ContainerButton.StyleClassButton).Class(ButtonGold)
+                    .Pseudo(ContainerButton.StylePseudoClassHover)
+                    .Prop(Control.StylePropertyModulateSelf, ButtonColorGoldHovered),
+
+                Element<ContainerButton>().Class(ContainerButton.StyleClassButton).Class(ButtonGold)
+                    .Pseudo(ContainerButton.StylePseudoClassPressed)
+                    .Prop(Control.StylePropertyModulateSelf, ButtonColorGoldPressed),
+                //Radium-end
             }).ToList());
         }
     }

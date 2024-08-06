@@ -11,7 +11,7 @@ namespace Content.Server.GameTicking.Commands
         [Dependency] private readonly IEntityManager _e = default!;
         [Dependency] private readonly IAdminManager _adminManager = default!;
 
-        public string Command => "backmen";
+        public string Command => "observe";
         public string Description => "";
         public string Help => "";
 

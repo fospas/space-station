@@ -27,6 +27,10 @@ namespace Content.Client.Stylesheets
 
         public const string ButtonCaution = "Caution";
 
+        //cats-start
+        public const string ButtonGold = "Gold";
+        //cats-end
+
         public const int DefaultGrabberSize = 10;
 
         public abstract Stylesheet Stylesheet { get; }

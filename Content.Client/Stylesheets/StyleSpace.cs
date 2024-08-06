@@ -22,6 +22,12 @@ namespace Content.Client.Stylesheets
         public static readonly Color ButtonColorCautionPressed = Color.FromHex("#3e6c45");
         public static readonly Color ButtonColorCautionDisabled = Color.FromHex("#602a2a");
 
+        //cats-start
+        public static readonly Color ButtonColorGoldDefault = Color.FromHex("#007BFF");
+        public static readonly Color ButtonColorGoldHovered = Color.FromHex("#0056b3");
+        public static readonly Color ButtonColorGoldPressed = Color.FromHex("#003d7a");
+        //cats-end
+
         public override Stylesheet Stylesheet { get; }
 
         public StyleSpace(IResourceCache resCache) : base(resCache)
@@ -195,6 +201,19 @@ namespace Content.Client.Stylesheets
                         new StyleProperty(TabContainer.StylePropertyTabStyleBoxInactive, tabContainerBoxInactive),
                     }),
 
+                //cats-start
+                Element<ContainerButton>().Class(ContainerButton.StyleClassButton).Class(ButtonGold)
+                    .Pseudo(ContainerButton.StylePseudoClassNormal)
+                    .Prop(Control.StylePropertyModulateSelf, ButtonColorGoldDefault),
+
+                Element<ContainerButton>().Class(ContainerButton.StyleClassButton).Class(ButtonGold)
+                    .Pseudo(ContainerButton.StylePseudoClassHover)
+                    .Prop(Control.StylePropertyModulateSelf, ButtonColorGoldHovered),
+
+                Element<ContainerButton>().Class(ContainerButton.StyleClassButton).Class(ButtonGold)
+                    .Pseudo(ContainerButton.StylePseudoClassPressed)
+                    .Prop(Control.StylePropertyModulateSelf, ButtonColorGoldPressed),
+                //cats-end
             }).ToList());
         }
     }
