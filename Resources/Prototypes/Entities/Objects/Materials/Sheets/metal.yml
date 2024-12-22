@@ -229,3 +229,25 @@
   - type: Stack
     stackType: Plasteel
     count: 1
+
+- type: entity
+  parent: SheetPlasteel
+  id: SheetP30 #cats
+  name: plasteel
+  components:
+  - type: Sprite
+    state: plasteel
+  - type: Stack
+    stackType: Plasteel
+    count: 30
+
+- type: entity
+  parent: SheetSteel
+  id: SheetS30 #cats
+  name: steel
+  components:
+  - type: Sprite
+    state: steel
+  - type: Stack
+    stackType: Steel
+    count: 30

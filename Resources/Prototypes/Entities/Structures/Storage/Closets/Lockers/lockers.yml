@@ -9,7 +9,6 @@
     stateBaseClosed: cabinet
     stateDoorOpen: cabinet_open
     stateDoorClosed: cabinet_door
-
   - type: AccessReader
     access: [["Bar"]]
   - type: EntityStorage
@@ -17,6 +16,20 @@
       path: /Audio/Effects/woodenclosetclose.ogg
     openSound:
       path: /Audio/Effects/woodenclosetopen.ogg
+
+- type: entity
+  id: SecurityEngineerLocker # cats
+  parent: LockerBase
+  name: шкаф полевого инженера
+  description: This is where the bartender keeps the booze.
+  components:
+  - type: Appearance
+  - type: EntityStorageVisuals
+    stateBaseClosed: security_engineer
+    stateDoorOpen: security_engineer_open
+    stateDoorClosed: security_engineer_locked
+  - type: AccessReader
+    access: [["Security"]]
 
 # Basic
 - type: entity

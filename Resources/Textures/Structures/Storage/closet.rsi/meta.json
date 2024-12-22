@@ -8,6 +8,15 @@
   "license": "CC-BY-SA-3.0",
   "states": [
     {
+        "name": "security_engineer"
+    },
+    {
+        "name": "security_engineer_door"
+    },
+    {
+        "name": "security_engineer_open"
+    },
+    {
       "name": "abductor"
     },
     {

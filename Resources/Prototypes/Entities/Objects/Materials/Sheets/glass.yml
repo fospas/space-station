@@ -403,6 +403,18 @@
     count: 1
 
 - type: entity
+  parent: SheetUGlass #cats
+  id: SheetU30
+  name: uranium glass
+  suffix: Single
+  components:
+  - type: Sprite
+    state: uglass
+  - type: Stack
+    stackType: UraniumGlass
+    count: 30
+
+- type: entity
   parent: SheetUGlass
   id: SheetRUGlass
   name: reinforced uranium glass

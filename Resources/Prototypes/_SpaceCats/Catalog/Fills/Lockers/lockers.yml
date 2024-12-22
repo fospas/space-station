@@ -1,0 +1,15 @@
+- type: entity
+  id: SecurityEngineerLockerFilled
+  suffix: Filled
+  parent: SecurityEngineerLocker
+  components:
+  - type: StorageFill
+    contents:
+      - id: ClothingOuterArmorBasic
+      - id: Flash
+      - id: HoloprojectorSecurity
+      - id: SecurityEngineerHardsuit
+      - id: SheetS30
+        amount: 2
+      - id: SheetP30
+      - id: SheetU30
