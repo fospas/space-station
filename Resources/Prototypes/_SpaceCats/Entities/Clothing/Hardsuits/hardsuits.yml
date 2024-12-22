@@ -44,3 +44,74 @@
   - type: ClothingGrantComponent
     component:
     - type: ThermalVision
+
+- type: entity
+  parent: ClothingOuterHardsuitBase
+  id: SecurityEngineerHardsuitHelmet
+  name: бронированный инженерный скафандр
+  description: Результат совместной работы Cybersun,Nanotrasen и Hafgan Heavy Industries. Очень тяжелый даже после замены бронепластин VI класса защиты на композитные,из-за этого пришлось интегрировать дорогой экзоскелет. Имеет повышенную защиту от всевозможных инженерных угроз и встроенное микро-БС хранилище для ваших материалов. Имеет дорогую систему заземления,выводящую высокие токи прямо в БС пространство.
+  components:
+  - type: Sprite
+    sprite: _SpaceCats/Clothing/OuterClothing/Hardsuits/Engi.rsi
+  - type: Clothing
+    sprite: _SpaceCats/Clothing/OuterClothing/Hardsuits/Engi.rsi
+  - type: PressureProtection
+    highPressureMultiplier: 0.01
+    lowPressureMultiplier: 1000
+  - type: ExplosionResistance
+    damageCoefficient: 0.3
+  - type: Storage
+    whitelist:
+      tags:
+        - SecBeltEquip
+        - CigPack
+        - Gauze
+        - MaterialBase
+        - PillCanister
+    maxItemSize: Normal
+    grid:
+    - 0,0,2,1
+    - 4,0,6,1
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.7
+        Slash: 0.7
+        Piercing: 0.6
+        Heat: 0.6
+        Shock: 0.1
+        Caustic: 0.4
+        Stun: 0.1
+  - type: ClothingSpeedModifier
+    walkModifier: 1
+    sprintModifier: 0.75
+  - type: MeleeWeapon
+    attackRate: 0.6
+    damage:
+      types:
+       Blunt: 15
+       Structural: 30
+    soundHit:
+      collection: Punch
+    animation: WeaponArcFist
+  - type: ToggleableClothing
+    clothingPrototype: SecurityEngineerHardsuitHelmet
+  - type: StaticPrice
+    price: 5000
+
+- type: entity
+  parent: [ClothingHeadHardsuitBase, ShowSecurityIcons]
+  id: CloakerHardsuitHelmet
+  name: шлем бронированного инженерного скафандра
+  description: Результат совместной работы Cybersun,Nanotrasen и Hafgan Heavy Industries. Довольно тяжелый даже после замены бронепластин VI класса защиты на композитные. Имеет повышенную защиту от всевозможных инженерных угроз и встроенное микро-БС хранилище для ваших материалов или коробок патронов. Имеет дорогую систему заземления,выводящую высокие токи прямо в БС пространство.
+  components:
+  - type: Sprite
+    sprite: _SpaceCats/Clothing/Head/Hardsuits/Engi.rsi
+  - type: Clothing
+    sprite: _SpaceCats/Clothing/Head/Hardsuits/Engi.rsi
+  - type: FlashImmunity
+  - type: EyeProtection
+  - type: ShowHealthBars
+    damageContainers:
+    - Inorganic
+    - Silicon

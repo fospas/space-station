@@ -536,7 +536,7 @@
           tags:
           - CaptainSabre
   - type: Appearance
-  
+
 - type: entity # backmen
   parent: [ClothingBeltBase, ClothingSlotBase]
   id: ClothingBeltYamato
@@ -568,7 +568,7 @@
           tags:
           - YamatoSabre
   - type: Appearance
-  
+
 - type: entity # backmen
   id: ClothingBeltYamatoFilled
   parent: ClothingBeltYamato
@@ -599,7 +599,7 @@
     whitelist:
       tags:
         - ShellShotgun
-    capacity: 14
+    capacity: 20
 
 - type: entity
   parent: ClothingBeltBase

@@ -2,7 +2,7 @@
   parent: [ClothingEyesBase, ShowSecurityIcons, BaseRestrictedContraband]
   id: ClothingEyesGlassesBrigmedic
   name: очки бриг-медика
-  description: Тамаши-улучшенные очки. Да. Бриг-медицинские.
+  description: Тамаши-улучшенные очки. Да. Бригмедицинские.
   components:
   - type: Sprite
     sprite: _SpaceCats/Clothing/Eyes/Glasses/brigmedicglasses.rsi
