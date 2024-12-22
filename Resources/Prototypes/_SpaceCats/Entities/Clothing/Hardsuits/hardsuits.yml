@@ -101,7 +101,7 @@
 
 - type: entity
   parent: [ClothingHeadHardsuitBase, ShowSecurityIcons]
-  id: CloakerHardsuitHelmet
+  id: SecurityEngineerHardsuitHelmet
   name: шлем бронированного инженерного скафандра
   description: Результат совместной работы Cybersun,Nanotrasen и Hafgan Heavy Industries. Довольно тяжелый даже после замены бронепластин VI класса защиты на композитные. Имеет повышенную защиту от всевозможных инженерных угроз и встроенное микро-БС хранилище для ваших материалов или коробок патронов. Имеет дорогую систему заземления,выводящую высокие токи прямо в БС пространство.
   components:
