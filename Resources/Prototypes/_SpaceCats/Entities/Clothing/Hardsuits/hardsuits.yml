@@ -61,13 +61,6 @@
   - type: ExplosionResistance
     damageCoefficient: 0.3
   - type: Storage
-    whitelist:
-      tags:
-        - SecBeltEquip
-        - CigPack
-        - Gauze
-        - MaterialBase
-        - PillCanister
     maxItemSize: Normal
     grid:
     - 0,0,2,1
