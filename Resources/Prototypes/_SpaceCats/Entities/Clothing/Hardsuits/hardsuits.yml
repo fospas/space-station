@@ -49,7 +49,7 @@
   parent: ClothingOuterHardsuitBase
   id: SecurityEngineerHardsuit
   name: бронированный инженерный скафандр
-  description: Результат совместной работы Cybersun,Nanotrasen и Hafgan Heavy Industries. Очень тяжелый даже после замены бронепластин VI класса защиты на композитные,из-за этого пришлось интегрировать дорогой экзоскелет. Имеет повышенную защиту от всевозможных инженерных угроз и дорогую систему заземления,выводящую высокие токи прямо в БС пространство.
+  description: Результат совместной работы Cybersun,Nanotrasen и Hafgan Heavy Industries. Имеет повышенную защиту от всевозможных инженерных угроз и дорогую систему заземления,выводящую высокие токи прямо в БС пространство.
   components:
   - type: Sprite
     sprite: _SpaceCats/Clothing/OuterClothing/Hardsuits/Engi.rsi
@@ -68,20 +68,11 @@
         Piercing: 0.6
         Heat: 0.6
         Shock: 0.1
-        Caustic: 0.4
-        Stun: 0.1
+        Caustic: 0.6
+        Stun: 0.6
   - type: ClothingSpeedModifier
     walkModifier: 1
     sprintModifier: 0.75
-  - type: MeleeWeapon
-    attackRate: 0.6
-    damage:
-      types:
-       Blunt: 15
-       Structural: 30
-    soundHit:
-      collection: Punch
-    animation: WeaponArcFist
   - type: Insulated
   - type: ToggleableClothing
     clothingPrototype: SecurityEngineerHardsuitHelmet
