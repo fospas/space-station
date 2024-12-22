@@ -158,11 +158,11 @@
         Slash: 0.8
         Piercing: 0.8
         Heat: 0.8
-  # phase cloak
   - type: ToggleClothing
     action: ActionsToggleCloak # Cats edit
   - type: ThermalCloak
-    opacity: 0.03
+    opacity: 0.08
+    cooldown: 7
     restrictWeapons: true
     ninjaSuit: true
     cloakedHideLayers:
