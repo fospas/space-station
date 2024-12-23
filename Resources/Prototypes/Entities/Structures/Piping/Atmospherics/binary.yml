@@ -81,6 +81,8 @@
   - type: ContainerContainer
     containers:
       VentCrawTube: !type:Container
+  - type: AtmosMonitoringConsoleDevice
+    navMapBlip: GasFlowRegulator
 
 - type: entity
   parent: GasBinaryBase
@@ -145,7 +147,10 @@
     - type: ContainerContainer
       containers:
         VentCrawTube: !type:Container
+    - type: AtmosMonitoringConsoleDevice
+      navMapBlip: GasFlowRegulator
 
+>>>>>>> f9aa07ed8c90784df3ed3ea7ac216f8544752882
 - type: entity
   parent: GasBinaryBase
   id: GasPassiveGate
@@ -181,7 +186,10 @@
     - type: ContainerContainer
       containers:
         VentCrawTube: !type:Container
+    - type: AtmosMonitoringConsoleDevice
+      navMapBlip: GasValve
 
+>>>>>>> f9aa07ed8c90784df3ed3ea7ac216f8544752882
 - type: entity
   parent: GasBinaryBase
   id: GasValve
@@ -236,6 +244,8 @@
     - type: ContainerContainer
       containers:
         VentCrawTube: !type:Container
+    - type: AtmosMonitoringConsoleDevice
+      navMapBlip: GasValve
 
 - type: entity
   parent: GasBinaryBase
@@ -302,6 +312,8 @@
   - type: ContainerContainer
     containers:
       VentCrawTube: !type:Container
+  - type: AtmosMonitoringConsoleDevice
+    navMapBlip: GasValve
 
 - type: entity
   parent: GasBinaryBase
@@ -340,6 +352,8 @@
     - type: ContainerContainer
       containers:
         VentCrawTube: !type:Container
+    - type: AtmosMonitoringConsoleDevice
+      navMapBlip: GasVentOpening
 
 - type: entity
   parent: GasVentPump
@@ -397,6 +411,8 @@
           pipeDirection: South
     - type: AmbientSound
       enabled: true
+    - type: AtmosMonitoringConsoleDevice
+      navMapBlip: GasVentOpening
 
 - type: entity
   parent: [ BaseMachine, ConstructibleMachine ]
@@ -459,6 +475,8 @@
         acts: ["Destruction"]
   - type: Machine
     board: GasRecyclerMachineCircuitboard
+  - type: AtmosMonitoringConsoleDevice
+    navMapBlip: GasValve
 
 - type: entity
   parent: GasBinaryBase
@@ -499,3 +517,5 @@
   - type: Construction
     graph: GasBinary
     node: radiator
+  - type: AtmosMonitoringConsoleDevice
+    navMapBlip: Thermoregulator

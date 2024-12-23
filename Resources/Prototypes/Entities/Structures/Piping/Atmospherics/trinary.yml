@@ -82,6 +82,8 @@
     - type: ContainerContainer
       containers:
         VentCrawTube: !type:Container
+    - type: AtmosMonitoringConsoleDevice
+      navMapBlip: GasFlowRegulator
 
 - type: entity
   parent: GasFilter
@@ -192,6 +194,8 @@
     - type: ContainerContainer
       containers:
         VentCrawTube: !type:Container
+    - type: AtmosMonitoringConsoleDevice
+      navMapBlip: GasFlowRegulator
 
 - type: entity
   parent: GasMixer
@@ -313,3 +317,5 @@
     - type: ContainerContainer
       containers:
         VentCrawTube: !type:Container
+    - type: AtmosMonitoringConsoleDevice
+      navMapBlip: GasFlowRegulator
