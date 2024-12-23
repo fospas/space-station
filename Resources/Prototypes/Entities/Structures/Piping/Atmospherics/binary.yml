@@ -150,7 +150,6 @@
     - type: AtmosMonitoringConsoleDevice
       navMapBlip: GasFlowRegulator
 
->>>>>>> f9aa07ed8c90784df3ed3ea7ac216f8544752882
 - type: entity
   parent: GasBinaryBase
   id: GasPassiveGate
@@ -189,7 +188,6 @@
     - type: AtmosMonitoringConsoleDevice
       navMapBlip: GasValve
 
->>>>>>> f9aa07ed8c90784df3ed3ea7ac216f8544752882
 - type: entity
   parent: GasBinaryBase
   id: GasValve

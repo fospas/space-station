@@ -167,7 +167,6 @@
     - type: AtmosMonitoringConsoleDevice
       navMapBlip: GasVentScrubber
 
->>>>>>> f9aa07ed8c90784df3ed3ea7ac216f8544752882
 - type: entity
   parent: GasUnaryBase
   id: GasOutletInjector
