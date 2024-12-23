@@ -6,6 +6,7 @@
   save: false
   abstract: true
   components:
+  - type: ThermalInvisibility # Cats edit
   - type: Reactive
     groups:
       Acidic: [Touch]
@@ -140,7 +141,6 @@
       cell_slot:
         name: power-cell-slot-component-slot-name-default
   - type: Body
-    thermalVisibility: false # Cats
   - type: StatusEffects
     allowed:
     - Stun
@@ -222,7 +222,7 @@
   - type: ToggleableLightVisuals
   - type: PointLight
     enabled: false
-    mask: /Textures/Effects/LightMasks/cone.png
+    mask: /Textures/_SpaceCats/Effects/LightMasks/cone.png # Cats edit
     autoRot: true
     radius: 4
     netsync: false

@@ -7,7 +7,7 @@
   guides: [ Blob ]
   requirements:
   - !type:OverallPlaytimeRequirement
-    time: 54000 # 15h # Corvax-RoleTime
+    time: 12000 # 15h # Corvax-RoleTime
   discordRequired: false # backmen: antag
 
 - type: antag
@@ -19,5 +19,5 @@
   guides: [  ]
   requirements:
   - !type:OverallPlaytimeRequirement
-    time: 540000 # 150h
+    time: 12000 # 150h
   discordRequired: false # backmen: antag

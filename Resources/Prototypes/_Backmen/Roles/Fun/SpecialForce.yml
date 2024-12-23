@@ -34,8 +34,8 @@
     back: ClothingBackpackSpecialForce
     shoes: ClothingShoesBootsMagSpecialForce
     mask: ClothingMaskGasDeathSquadV2_1
-    neck: CombatKnifeSpetsnaz
     eyes: ClothingEyesNightVisionGoggles
+    neck: CombatKnifeSpetsnaz
     gloves: ClothingHandsGlovesSpetsnazcombat
     outerClothing: ClothingOuterHardsuitDeathsquad
     head: ClothingHeadHatBeretMobileTaskForce

@@ -5,7 +5,7 @@
     back: ClothingBackpackDuffelRXBZZ
     shoes: ClothingShoesBootsMagArmy
     mask: ClothingMaskGasRXBZZ
-    eyes: ClothingEyesGlassesSecurity
+    eyes: ClothingEyesThermalVisionGoggles
     neck: CombatKnifeSpetsnaz
     gloves: ClothingHandsGlovesCombat
     outerClothing: ClothingOuterHardsuitCBURN
@@ -55,8 +55,8 @@
     back: ClothingBackpackDuffelRXBZZ
     shoes: ClothingShoesBootsMagArmy
     mask: ClothingMaskGasRXBZZ
-    eyes: ClothingEyesThermalVisionGoggles
     neck: CombatKnifeSpetsnaz
+    eyes: ClothingEyesThermalVisionGoggles
     gloves: ClothingHandsGlovesCombat
     outerClothing: ClothingOuterHardsuitCBURNLeader
     id: idcoinRXBZZSergant

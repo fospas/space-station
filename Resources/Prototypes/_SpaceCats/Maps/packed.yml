@@ -61,6 +61,7 @@
             Mime: [ 1, 1 ]
             Musician: [ 1, 1 ]
             # backmen
+            Maid: [ 0, 1]
             Brigmedic: [ 1, 1 ] # backmen-Brigmedic
             BlueShield: [1, 1] # backmen-BlueShield
             StationAi: [ 1, 1 ]
@@ -68,6 +69,7 @@
             #BKBPLAMED: [ 0, 1 ] # backmen-BPLAMED-Silicons
 #            Deliveryman: [ 0, 1 ]
             Prisoner: [ 2, 2 ]
+            SecurityEngineer: [ 0, 1]
         # backmen blob-config-start SMALL+
         - type: StationBlobConfig
           stageBegin: 25

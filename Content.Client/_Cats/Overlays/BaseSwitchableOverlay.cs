@@ -33,7 +33,7 @@ public class BaseSwitchableOverlay<TComp> : Overlay
             return;
 
         _shader.SetParameter("SCREEN_TEXTURE", ScreenTexture);
-        _shader.SetParameter("tint", component.Tint);
+       // _shader.SetParameter("tint", component.Tint);
         _shader.SetParameter("luminance_threshold", component.Strength);
         _shader.SetParameter("noise_amount", component.Noise);
 
@@ -41,7 +41,7 @@ public class BaseSwitchableOverlay<TComp> : Overlay
 
         worldHandle.SetTransform(Matrix3x2.Identity);
         worldHandle.UseShader(_shader);
-        worldHandle.DrawRect(args.WorldBounds, component.Color);
+    //    worldHandle.DrawRect(args.WorldBounds, component.Color);
         worldHandle.UseShader(null);
     }
 }

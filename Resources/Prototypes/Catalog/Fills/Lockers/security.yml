@@ -65,7 +65,7 @@
         amount: 2
       - id: ClothingHeadCageSec # cats
         amount: 3
-      - id: BoxImpantsDead # cats
+      - id: ClothingHandsGlovesKravMaga # cats
 
 - type: entity
   id: LockerSecurityFilled
@@ -157,6 +157,7 @@
       - id: HoloprojectorSecurity
       - id: BoxEvidenceMarkers
       - id: HandLabeler
+      - id: HandHeldCriminalRecords # Cats
 
 - type: entity
   id: ClosetBombFilled

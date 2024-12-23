@@ -18,7 +18,8 @@
   - bloodsucker
   name: vampires-title
   description: vampires-description
-  showInVote: false
+  showInVote: true
+  minPlayers: 10
   rules:
   - VampiresGameRule
   - BasicStationEventScheduler
@@ -34,7 +35,7 @@
   name: blob-title
   description: blob-description
   minPlayers: 10
-  showInVote: false
+  showInVote: true
   rules:
   - BlobGameMode
   - BasicStationEventScheduler
@@ -53,9 +54,9 @@
   - XenoAgentGameMode
   - CalmStationEventScheduler
   - WageScheduler #backmen: currency
-  - BasicRoundstartVariation
+#  - BasicRoundstartVariation
   - SubGamemodesRule
-  - CalmMeteorSwarmScheduler
+#  - CalmMeteorSwarmScheduler
 
 - type: gamePreset
   id: FleshCult
@@ -65,7 +66,7 @@
   name: flesh-cult-title
   description: flesh-cult-description
   minPlayers: 10
-  showInVote: false
+  showInVote: true
   rules:
   - FleshCult
   - BasicStationEventScheduler
@@ -275,7 +276,7 @@
   - opg
   name: criminal-gamemode-title
   description: thief-extended-gamemode-description
-  showInVote: false
+  showInVote: true
   rules:
   - Revolutionary
   - ExtendedThief

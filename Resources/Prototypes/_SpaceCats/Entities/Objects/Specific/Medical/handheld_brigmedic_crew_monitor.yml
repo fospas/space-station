@@ -2,8 +2,11 @@
   name: BrigBuddy™ 5000
   parent: [ BaseHandheldComputer, BaseRestrictedContraband ]
   id: HandheldBrigmedicCrewMonitor
-  description: Настолько продвинутый, что отслеживает только персонал службы безопасности! Не отслеживает эмоциональную стабильность или уровень компетентности сотрудников службы безопасности. Используйте на свой страх и риск!
+  description: Настолько продвинутый, что отслеживает сверх точно! Не отслеживает эмоциональную стабильность или уровень компетентности сотрудников службы безопасности. Используйте на свой страх и риск!
   components:
+  - type: Tag
+    tags:
+      - BrigmedicBeltEquip
   - type: Sprite
     sprite: _SpaceCats/Objects/Specific/Medical/handheldbrigmediccrewmonitor.rsi
     state: scanner
@@ -12,19 +15,22 @@
   - type: UserInterface
     interfaces:
       enum.CrewMonitoringUIKey.Key:
-        type: BrigmedicCrewMonitoringBoundUserInterface
+        type: CrewMonitoringBoundUserInterface
   - type: CrewMonitoringConsole
   - type: DeviceNetwork
     deviceNetId: Wireless
     receiveFrequencyId: CrewMonitor
   - type: WirelessNetworkConnection
-    range: 500
+    range: 750 #мб из-за недостатка дальности он не работает
 
 - type: entity
   id: HandheldBrigmedicCrewMonitorEmpty
   parent: HandheldBrigmedicCrewMonitor
   suffix: Empty
   components:
+  - type: Tag
+    tags:
+      - BrigmedicBeltEquip
   - type: ItemSlots
     slots:
       cell_slot:

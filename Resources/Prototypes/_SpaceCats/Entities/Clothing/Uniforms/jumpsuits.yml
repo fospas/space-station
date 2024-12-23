@@ -51,3 +51,28 @@
   - type: Tag
     tags:
     - WhitelistChameleon
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingBlackJumpsuit
+  name: комбинезон офицера
+  description: Довольно симпатичный официальный костюм из эластичных материалов.
+  components:
+  - type: Sprite
+    sprite: _SpaceCats/BridgeOfficer/BOJumpsuit.rsi
+  - type: Clothing
+    sprite: _SpaceCats/BridgeOfficer/BOJumpsuit.rsi
+  - type: Tag
+    tags:
+    - WhitelistChameleon
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitSecEngineer
+  name: комбинезон полевого офицера
+  description: Комбинезон изготовлен из прочного материала, обеспечивающего надежную защиту.
+  components:
+  - type: Sprite
+    sprite: _SpaceCats/Clothing/Uniforms/Sec/Engineer/securityEngineerJumpSuit.rsi
+  - type: Clothing
+    sprite: _SpaceCats/Clothing/Uniforms/Sec/Engineer/securityEngineerJumpSuit.rsi

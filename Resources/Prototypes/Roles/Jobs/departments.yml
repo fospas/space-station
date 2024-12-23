@@ -73,6 +73,7 @@
   - HeadOfSecurity
   - ResearchDirector
   - Quartermaster
+  - Maid # Cats
   #- CentralCommandOfficial
   - CBURN
   - ERTLeader
@@ -134,6 +135,7 @@
   - Detective
   - Warden
   - Brigmedic #backmen
+  - SecurityEngineer # Cats
   accountNumber: 1320  #backmen: currency
 
 - type: department

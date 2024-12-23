@@ -14,7 +14,6 @@ ghost-roles-window-title = Роли призраков
 ghost-target-category-ghost-role = Роль призрака
 ghost-target-window-player-warp-name = {$entityName} ({$jobName})
 ghost-target-warp-role = Призрак
-ghost-roles-window-available-button = Available ({ $rolesCount })
 ghost-roles-window-available-button = Доступно ({ $rolesCount })
 ghost-roles-window-join-raffle-button = Участвовать в лотерее
 ghost-roles-window-raffle-in-progress-button =

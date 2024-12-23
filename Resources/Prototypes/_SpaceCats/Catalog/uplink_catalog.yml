@@ -41,7 +41,7 @@
   description: uplink-night-vision-desc
   productEntity: ClothingEyesNightVisionGogglesNukie
   cost:
-    Telecrystal: 6
+    Telecrystal: 10
   categories:
   - UplinkWearables
   conditions:
@@ -73,7 +73,7 @@
   description: uplink-thermal-vision-desc
   productEntity: ClothingEyesThermalVisionGogglesNukie
   cost:
-    Telecrystal: 8
+    Telecrystal: 12
   categories:
   - UplinkWearables
   conditions:
@@ -83,15 +83,11 @@
       - NukeOpsUplink
 
 - type: listing
-  id: UplinkSyndicatePersonalNecoAI
-  name: uplink-syndicate-necopai-name
-  description: uplink-syndicate-necopai-desc
-  icon: { sprite: /Textures/_SpaceCats/Objects/Fun/pai-neco.rsi, state: syndicate-icon-pai-off }
-  productEntity: SyndicatePersonalNecoAI
+  id: ADTUplinkInvisibleCloak
+  name: uplink-invisible-cloak-name
+  description: uplink-invisible-cloak-desc
+  productEntity: ClothingNeckInvisibleCloak
   cost:
-    Telecrystal: 1
+    Telecrystal: 10
   categories:
-  - UplinkAllies
-  conditions:
-  - !type:ListingLimitedStockCondition
-    stock: 1
+    - UplinkWearables

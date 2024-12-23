@@ -21,6 +21,7 @@
     - id: AstroNavCartridge
     - id: PrinterDocFlatpack # Corvax-Printer
     - id: AstroNavCartridge
+    - id: TelescopicBaton # Cats
 
 - type: entity
   id: LockerQuarterMasterFilled
@@ -62,6 +63,7 @@
     - id: ClothingHeadCage # backmen
     - id: HandheldReinforcementCentCom # backmen
 #    - id: ClothingEyesGlassesCommand
+    - id: TelescopicBaton # Cats
 
 # No laser table + Laser table
 - type: entityTable
@@ -81,6 +83,7 @@
     - id: ClothingMaskGasCaptain
     - id: JetpackCaptainFilled
     - id: OxygenTankFilled
+    - id: ClothingShoesBootsMagCaptain # Cats edit
 
 # No laser locker, used when the antique laser is placed in the special display crate
 - type: entity
@@ -148,6 +151,7 @@
     - id: ClothingOuterCoatHOP # Corvax-Resprite
     - id: PrinterDocFlatpack # Corvax-Printer
     - id: ClothingEyesHudCommand
+    - id: TelescopicBaton # Cats
 
 - type: entity
   id: LockerHeadOfPersonnelFilled
@@ -174,6 +178,7 @@
     - id: ClothingHeadsetAltEngineering
     - id: ClothingHeadHatBeretChiefEngineering
     - id: DoorRemoteEngineering
+    - id: StationBlueprints # Cats
     - id: RCD
     - id: RCDAmmo
     - id: RubberStampCE
@@ -181,6 +186,8 @@
     - id: ClothingHeadCage # backmen
     - id: PrinterDocFlatpack # Corvax-Printer
     - id: SupermatterFlatpack # backmen
+    - id: TelescopicBaton # Cats
+    - id: RPD # Cats
 
 # Hardsuit table, used for suit storage as well
 - type: entityTable
@@ -245,6 +252,7 @@
     - id: MedicalBiofabMachineBoard # backmen
     - id: MedTekCartridge
 #    - id: genguns # space cats
+    - id: TelescopicBaton # Cats
 
 # Hardsuit table, used for suit storage as well
 - type: entityTable
@@ -303,6 +311,7 @@
     - id: FlatpackSophie # backmen
     - id: AnomalyPinpointer # cats
     - id: ClothingOuterReactiveArmor # cats
+    - id: TelescopicBaton # Cats
 
 # Hardsuit table, used for suit storage as well
 - type: entityTable
@@ -367,6 +376,7 @@
     - id: ClothingHeadHatCapHoS # Corvax-SecFashion
     - id: ClothingOuterCoatHoSGreatcoat # Corvax-Resprite
     - id: BookBusido # Corvax-Books
+    - id: TelescopicBaton # Cats
 
 # Hardsuit table, used for suit storage as well
 - type: entityTable
