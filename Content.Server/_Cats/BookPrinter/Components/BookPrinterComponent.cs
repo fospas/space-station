@@ -1,3 +1,5 @@
+// Оригинал данного файла был сделан @temporaldarkness (discord). Код был взят с https://github.com/ss14-ganimed/ENT14-Master.
+
 using Content.Server._Cats.BookPrinter;
 using Content.Shared._Cats.BookPrinter;
 using Robust.Shared.Audio;
