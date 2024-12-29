@@ -1,4 +1,5 @@
-# Оригинал данного файла был сделан @temporaldarkness (discord). Прототип был взят с https://github.com/ss14-ganimed/ENT14-Master.- type: entity
+# Оригинал данного файла был сделан @temporaldarkness (discord). Прототип был взят с https://github.com/ss14-ganimed/ENT14-Master.
+- type: entity
   id: BookPrinterInkCartridge
   parent: BaseItem
   name: printer cartridge
