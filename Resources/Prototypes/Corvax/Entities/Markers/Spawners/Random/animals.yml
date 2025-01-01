@@ -32,7 +32,7 @@
         - MobLizard
         - MobSlug
         - MobFrog
-        - MobParrot
+        - MobParrotSmart # Cats-Parrot: replaced MobParrot
         - MobPenguin
         - MobSnake
         - MobPossum

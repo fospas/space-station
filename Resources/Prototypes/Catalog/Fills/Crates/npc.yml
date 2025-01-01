@@ -181,7 +181,7 @@
   components:
   - type: StorageFill
     contents:
-      - id: MobParrot
+      - id: MobParrotSmart # Cats-Parrot: replaced MobParrot
         amount: 3
 
 - type: entity
