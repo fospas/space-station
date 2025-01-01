@@ -3,6 +3,7 @@ using Content.Server.Chat.Systems;
 using Content.Server.Speech.Components;
 using Content.Shared.Mind.Components;
 using Content.Shared.Whitelist;
+using Content.Shared.Chat;
 using Robust.Shared.Random;
 using Robust.Shared.Timing;
 
