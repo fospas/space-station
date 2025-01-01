@@ -51,7 +51,7 @@ public sealed class ParrotSpeechSystem : EntitySystem
                 continue;
 
             // Send the phrase to the chat system (hidden from chat/log to avoid spam)
-            _chat.TrySendInGameICMessage(uid, phrase, InGameICChatType.Speak,
+            _chat.TrySendInGameICMessage(uid, message, InGameICChatType.Speak,
                 hideChat: true,
                 hideLog: true,
                 checkRadioPrefix: false);
