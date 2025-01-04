@@ -114,7 +114,7 @@ public sealed partial class HungerComponent : Component
     /// <summary>
     /// Damage dealt when your current threshold is at HungerThreshold.Dead
     /// </summary>
-    [DataField("starvationDamage"), Access(Other = AccessPermissions.ReadWrite)]
+    [DataField("starvationDamage")]
     public DamageSpecifier? StarvationDamage;
 
     /// <summary>
