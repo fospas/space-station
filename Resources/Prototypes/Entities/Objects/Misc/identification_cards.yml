@@ -26,6 +26,7 @@
     - WhitelistChameleonIdCard
   - type: StealTarget
     stealGroup: IDCard
+  - type: NanoChatCard # Cats-PDAChat
 
 #IDs with layers
 
@@ -844,3 +845,5 @@
   - type: Tag #  Ignore Chameleon tags
     tags:
     - DoorBumpOpener
+  - type: NanoChatCard # Cats-PDAChat
+    notificationsMuted: true

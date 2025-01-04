@@ -64,8 +64,9 @@
   - type: UnpoweredFlashlight
   - type: ShadowkinLight
   - type: PointLight
+    mask: /Textures/_SpaceCats/Effects/LightMasks/cone.png # Cats edit
     enabled: false
-    radius: 1.5
+    radius: 1.8 # Cats edit
     softness: 5
     autoRot: true
   - type: Ringer
@@ -154,6 +155,7 @@
       - CrewManifestCartridge
       - NotekeeperCartridge
       - NewsReaderCartridge
+      - NanoChatCartridge # Cats-PDAChat
       - MedTekCartridge
 
 - type: entity
@@ -507,6 +509,7 @@
       - CrewManifestCartridge
       - NotekeeperCartridge
       - NewsReaderCartridge
+      - NanoChatCartridge # Cats-PDAChat
       - AstroNavCartridge
 
 - type: entity
@@ -955,6 +958,7 @@
       - CrewManifestCartridge
       - NotekeeperCartridge
       - NewsReaderCartridge
+      - NanoChatCartridge # Cats-PDAChat
       - MedTekCartridge
       - WantedListCartridge
       - LogProbeCartridge
@@ -979,6 +983,7 @@
       - CrewManifestCartridge
       - NotekeeperCartridge
       - NewsReaderCartridge
+      - NanoChatCartridge # Cats-PDAChat
       - LogProbeCartridge
       - WantedListCartridge
       - MedTekCartridge
@@ -1142,6 +1147,7 @@
       - CrewManifestCartridge
       - NotekeeperCartridge
       - NewsReaderCartridge
+      - NanoChatCartridge # Cats-PDAChat
       - MedTekCartridge
       - WantedListCartridge
       - LogProbeCartridge
