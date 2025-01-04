@@ -286,8 +286,7 @@ public abstract partial class SharedGunSystem : EntitySystem
                 return;
             }
         }
-        ///Cats-Personal-Gun block end
-        ///
+
         var toCoordinates = gun.ShootCoordinates;
 
         if (toCoordinates == null)
