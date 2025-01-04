@@ -69,3 +69,4 @@
             # Cats
             Maid: [ 0, 1]
             BridgeOfficer: [ 0, 1 ]
+            StationAi: [ 1, 1 ]
